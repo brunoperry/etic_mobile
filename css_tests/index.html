@@ -8,7 +8,6 @@
     <title>Pwa Player</title>
 
     <link rel="stylesheet" href="style.css">
-    <script type="module" src="script.js"></script>
 </head>
 
 <body>
@@ -18,31 +17,25 @@
     </div>
     <div id="controller">
         <button>
-            <svg width="30%" height="100%" viewBox="0 0 9 12" fill="var(--terciary-color)">
+            <svg width="30%" height="100%" viewBox="0 0 9 12" fill="var(--color-yellow)">
                 <path d="M1.899,6.024l0,4.961l-1.899,-0l0,-10.985l1.899,0l0,4.996l7,-4.978l-0,10.984l-7,-4.978Z" />
             </svg>
         </button>
 
         <button>
-            <svg width="50%" height="100%" viewBox="0 0 23 23" fill="var(--terciary-color)">
+            <svg width="50%" height="100%" viewBox="0 0 23 23" fill="var(--color-yellow)">
                 <path d="M22.164,11.082l-22.164,11.082l0,-22.164l22.164,11.082Z" />
             </svg>
         </button>
 
         <button>
-            <svg width="30%" height="100%" viewBox="0 0 9 12" fill="var(--terciary-color)">
+            <svg width="30%" height="100%" viewBox="0 0 9 12" fill="var(--color-yellow)">
                 <path d="M7,4.978l-0,-4.96l1.899,-0l-0,10.984l-1.899,0l-0,-4.995l-7,4.978l-0,-10.985l7,4.978Z" />
             </svg>
         </button>
     </div>
-    <div id="scrub" class="range">
-        <div class="range-bar"></div>
-        <input type="range" min="0" max="100" value="10">
-    </div>
-
-    <div id="volume" class="range">
-        <div class="range-bar"></div>
-        <input type="range" min="0" max="100" value="10">
+    <div id="volume">
+        <input type="range">
     </div>
     <div id="menu">
         <button>MENU</button>
