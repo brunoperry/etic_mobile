@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pwa Player</title>
+    <link rel="icon" type="image/svg+xml" href="icon.svg">
+    <link rel="stylesheet" href="style.css">
+    <script type="module" src="script.js"></script>
+</head>
+
+<body>
+    <div id="info">
+        <button id="info-button" class="toggle">
+            <label>MUSIC PLAYER</label>
+            <svg width="47px" height="47px" viewBox="0 0 6 6" fill="var(--terciary-color)">
+                <path
+                    d="M2.831,1.858l1.802,-1.858l1.03,1.062l-1.716,1.769l1.716,1.77l-1.03,1.062l-1.802,-1.858l-1.801,1.858l-1.03,-1.062l1.716,-1.77l-1.716,-1.769l1.03,-1.062l1.801,1.858Z" />
+            </svg>
+        </button>
+        <div id="info-container">
+            <div class="content">
+                INFO CONTENT
+            </div>
+        </div>
+    </div>
+    <div id="controller">
+        <button id="previous-button">
+            <svg width="20%" height="100%" viewBox="0 0 9 12" fill="var(--terciary-color)">
+                <path d="M1.899,6.024l0,4.961l-1.899,-0l0,-10.985l1.899,0l0,4.996l7,-4.978l-0,10.984l-7,-4.978Z" />
+            </svg>
+        </button>
+
+        <button id="action-button" class="toggle">
+            <svg width="50%" height="90%" viewBox="0 0 23 23" fill="var(--terciary-color)">
+                <path d="M22.164,11.082l-22.164,11.082l0,-22.164l22.164,11.082Z" />
+            </svg>
+            <svg width="50%" height="90%" viewBox="0 0 23 23" fill="var(--terciary-color)">
+                <rect x="-0" y="0" width="9.339" height="22.166" />
+                <rect x="12.825" y="0" width="9.339" height="22.166" />
+            </svg>
+            <svg width="50%" height="90%" viewBox="0 0 23 23" fill="var(--secondary-color)">
+                <rect x="0" y="8.29" width="5.585" height="5.585" />
+                <rect x="8.29" y="8.29" width="5.585" height="5.585" />
+                <rect x="16.58" y="8.29" width="5.585" height="5.585" />
+                <rect x="0" y="0" width="22.164" height="22.165" fill="none" />
+            </svg>
+        </button>
+
+        <button id="next-button">
+            <svg width="20%" height="100%" viewBox="0 0 9 12" fill="var(--terciary-color)">
+                <path d="M7,4.978l-0,-4.96l1.899,-0l-0,10.984l-1.899,0l-0,-4.995l-7,4.978l-0,-10.985l7,4.978Z" />
+            </svg>
+        </button>
+    </div>
+    <!-- <div id="scrub" class="range">
+        <div class="range-bar"></div>
+        <input type="range" min="0" max="100" value="10">
+    </div> -->
+
+    <div id="volume" class="range">
+        <div class="range-bar"></div>
+        <input type="range" min="0" max="100" value="10">
+    </div>
+    <div id="menu">
+        <button id="menu-button" class="toggle">
+            <svg width="47px" height="47px" viewBox="0 0 11 11" fill="var(--terciary-color)">
+                <rect x="0" y="0" width="10.355" height="3.876" />
+                <rect x="0" y="6.485" width="10.355" height="3.87" />
+            </svg>
+            <svg width="47px" height="47px" viewBox="0 0 6 6" fill="var(--terciary-color)">
+                <path
+                    d="M2.831,1.858l1.802,-1.858l1.03,1.062l-1.716,1.769l1.716,1.77l-1.03,1.062l-1.802,-1.858l-1.801,1.858l-1.03,-1.062l1.716,-1.77l-1.716,-1.769l1.03,-1.062l1.801,1.858Z" />
+            </svg>
+        </button>
+        <div id="menu-container">
+            <div class="content">
+                MENU CONTENT
+            </div>
+        </div>
+    </div>
+
+    <template>
+        <li>
+            <label></label>
+            <div class="icons">
+                <svg width="47px" height="47px" viewBox="0 0 4 5" fill="var(--primary-color)">
+                    <path
+                        d="M0,3.681l1.397,-1.416l-1.397,-1.416l0.838,-0.849l2.236,2.265l-2.236,2.265l-0.838,-0.849Z" />
+                </svg>
+            </div>
+        </li>
+    </template>
+
+    <input type="file" id="file-input" multiple accept="audio/*" class="hidden">
+
+    <!-- <div id="splash">
+        <svg width="100%" height="100%" viewBox="0 0 21 21" fill="var(--terciary-color)">
+            <path
+                d="M16.663,17.003l-4.283,0l-0,-3.994l2.048,-0l-0,-5.309l-6.076,0l0.001,9.303l-4.284,0l0,-3.994l2.047,-0l-0,-9.302l10.547,0l0,13.296Z" />
+        </svg>
+    </div> -->
+</body>
+
+</html>

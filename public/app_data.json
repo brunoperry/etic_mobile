@@ -1,0 +1,266 @@
+[
+  {
+    "id": "radios",
+    "type": "folder",
+    "name": "radios",
+    "children": [
+      {
+        "url": "https://bassdrive.radioca.st/stream",
+        "name": "bassdrive",
+        "id": "radios/bassdrive",
+        "type": "music"
+      },
+      {
+        "url": "https://streaming04.liveboxstream.uk/proxy/dwain?mp=/stream;",
+        "name": "boot boy",
+        "id": "radios/boot boy",
+        "type": "music"
+      }
+    ]
+  },
+  {
+    "id": "music",
+    "type": "folder",
+    "name": "music",
+    "children": [
+      {
+        "id": "music/chillout",
+        "type": "folder",
+        "name": "chillout",
+        "children": [
+          {
+            "id": "music/chillout/01-leon_de_winter--apollo_jazz-3972c6c4.mp3",
+            "type": "file",
+            "name": "01-leon_de_winter--apollo_jazz-3972c6c4",
+            "url": "https://firebasestorage.googleapis.com/v0/b/web-development-etic.appspot.com/o/chillout%2F01-leon_de_winter--apollo_jazz-3972c6c4.mp3?alt=media&token=bef5a59e-6f83-487c-85dd-7479a672e34d"
+          },
+          {
+            "id": "music/chillout/santigold",
+            "type": "folder",
+            "name": "santigold",
+            "children": [
+              {
+                "id": "music/chillout/santigold/master of my make-believe",
+                "type": "folder",
+                "name": "master of my make-believe",
+                "children": [
+                  {
+                    "id": "music/chillout/santigold/master of my make-believe/02 Disparate Youth.mp3",
+                    "type": "file",
+                    "name": "02 Disparate Youth",
+                    "url": "https://firebasestorage.googleapis.com/v0/b/web-development-etic.appspot.com/o/chillout%2Fsantigold%2Fmaster%20of%20my%20make-believe%2F02%20Disparate%20Youth.mp3?alt=media&token=016c4100-eb61-4c32-a911-351586c2e838"
+                  },
+                  {
+                    "id": "music/chillout/santigold/master of my make-believe/03 God From The Machine.mp3",
+                    "type": "file",
+                    "name": "03 God From The Machine",
+                    "url": "https://firebasestorage.googleapis.com/v0/b/web-development-etic.appspot.com/o/chillout%2Fsantigold%2Fmaster%20of%20my%20make-believe%2F03%20God%20From%20The%20Machine.mp3?alt=media&token=94569501-d505-4037-8422-6078ad41cf34"
+                  },
+                  {
+                    "id": "music/chillout/santigold/master of my make-believe/01 GO!.mp3",
+                    "type": "file",
+                    "name": "01 GO!",
+                    "url": "https://firebasestorage.googleapis.com/v0/b/web-development-etic.appspot.com/o/chillout%2Fsantigold%2Fmaster%20of%20my%20make-believe%2F01%20GO!.mp3?alt=media&token=b122692a-432b-40a1-a781-134c14327ef5"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "music/ska",
+        "type": "folder",
+        "name": "ska",
+        "children": [
+          {
+            "id": "music/ska/bad manners",
+            "type": "folder",
+            "name": "bad manners",
+            "children": [
+              {
+                "id": "music/ska/bad manners/looney tunes",
+                "type": "folder",
+                "name": "looney tunes",
+                "children": [
+                  {
+                    "id": "music/ska/bad manners/looney tunes/01 - Bad Manners - Echo 4 2.mp3",
+                    "type": "file",
+                    "name": "01 - Bad Manners - Echo 4 2",
+                    "url": "https://firebasestorage.googleapis.com/v0/b/web-development-etic.appspot.com/o/ska%2Fbad%20manners%2Flooney%20tunes%2F01%20-%20Bad%20Manners%20-%20Echo%204%202.mp3?alt=media&token=6b05de11-9627-4872-b9c4-5f8588dbb97a"
+                  },
+                  {
+                    "id": "music/ska/bad manners/looney tunes/04 - Bad Manners - Doris.mp3",
+                    "type": "file",
+                    "name": "04 - Bad Manners - Doris",
+                    "url": "https://firebasestorage.googleapis.com/v0/b/web-development-etic.appspot.com/o/ska%2Fbad%20manners%2Flooney%20tunes%2F04%20-%20Bad%20Manners%20-%20Doris.mp3?alt=media&token=ae73c0f3-1491-4905-9172-b4b128366429"
+                  },
+                  {
+                    "id": "music/ska/bad manners/looney tunes/02 - Bad Manners - Just A Feeling.mp3",
+                    "type": "file",
+                    "name": "02 - Bad Manners - Just A Feeling",
+                    "url": "https://firebasestorage.googleapis.com/v0/b/web-development-etic.appspot.com/o/ska%2Fbad%20manners%2Flooney%20tunes%2F02%20-%20Bad%20Manners%20-%20Just%20A%20Feeling.mp3?alt=media&token=5b210b2c-a3fe-4c04-980e-5c578d766091"
+                  },
+                  {
+                    "id": "music/ska/bad manners/looney tunes/06 - Bad Manners - Tequila.mp3",
+                    "type": "file",
+                    "name": "06 - Bad Manners - Tequila",
+                    "url": "https://firebasestorage.googleapis.com/v0/b/web-development-etic.appspot.com/o/ska%2Fbad%20manners%2Flooney%20tunes%2F06%20-%20Bad%20Manners%20-%20Tequila.mp3?alt=media&token=e300dea7-ee73-4d2b-a3e0-d1f84c5c138c"
+                  },
+                  {
+                    "id": "music/ska/bad manners/looney tunes/05 - Bad Manners - Spy I.mp3",
+                    "type": "file",
+                    "name": "05 - Bad Manners - Spy I",
+                    "url": "https://firebasestorage.googleapis.com/v0/b/web-development-etic.appspot.com/o/ska%2Fbad%20manners%2Flooney%20tunes%2F05%20-%20Bad%20Manners%20-%20Spy%20I.mp3?alt=media&token=36000887-c638-43c3-9a61-d7407d39f141"
+                  },
+                  {
+                    "id": "music/ska/bad manners/looney tunes/12 - Bad Manners - Just Pretendin'.mp3",
+                    "type": "file",
+                    "name": "12 - Bad Manners - Just Pretendin'",
+                    "url": "https://firebasestorage.googleapis.com/v0/b/web-development-etic.appspot.com/o/ska%2Fbad%20manners%2Flooney%20tunes%2F12%20-%20Bad%20Manners%20-%20Just%20Pretendin'.mp3?alt=media&token=33c495f7-70e9-48de-a080-c111676d8cf4"
+                  },
+                  {
+                    "id": "music/ska/bad manners/looney tunes/08 - Bad Manners - Echo Gone Wrong.mp3",
+                    "type": "file",
+                    "name": "08 - Bad Manners - Echo Gone Wrong",
+                    "url": "https://firebasestorage.googleapis.com/v0/b/web-development-etic.appspot.com/o/ska%2Fbad%20manners%2Flooney%20tunes%2F08%20-%20Bad%20Manners%20-%20Echo%20Gone%20Wrong.mp3?alt=media&token=3ca68cf0-5627-428f-98d6-3b17acfaa2f0"
+                  },
+                  {
+                    "id": "music/ska/bad manners/looney tunes/03 - Bad Manners - Pussy Cat.mp3",
+                    "type": "file",
+                    "name": "03 - Bad Manners - Pussy Cat",
+                    "url": "https://firebasestorage.googleapis.com/v0/b/web-development-etic.appspot.com/o/ska%2Fbad%20manners%2Flooney%20tunes%2F03%20-%20Bad%20Manners%20-%20Pussy%20Cat.mp3?alt=media&token=7b8777cd-aea6-494b-946b-2b8522b9beb4"
+                  },
+                  {
+                    "id": "music/ska/bad manners/looney tunes/07 - Bad Manners - Lorraine.mp3",
+                    "type": "file",
+                    "name": "07 - Bad Manners - Lorraine",
+                    "url": "https://firebasestorage.googleapis.com/v0/b/web-development-etic.appspot.com/o/ska%2Fbad%20manners%2Flooney%20tunes%2F07%20-%20Bad%20Manners%20-%20Lorraine.mp3?alt=media&token=f4bb0458-27fe-4b43-84f4-fd1bf8068e84"
+                  },
+                  {
+                    "id": "music/ska/bad manners/looney tunes/11 - Bad Manners - Back In '60.mp3",
+                    "type": "file",
+                    "name": "11 - Bad Manners - Back In '60",
+                    "url": "https://firebasestorage.googleapis.com/v0/b/web-development-etic.appspot.com/o/ska%2Fbad%20manners%2Flooney%20tunes%2F11%20-%20Bad%20Manners%20-%20Back%20In%20'60.mp3?alt=media&token=6698556f-5b27-4a7f-8b3d-9e6c4e4b61c0"
+                  },
+                  {
+                    "id": "music/ska/bad manners/looney tunes/09 - Bad Manners - Suicide.mp3",
+                    "type": "file",
+                    "name": "09 - Bad Manners - Suicide",
+                    "url": "https://firebasestorage.googleapis.com/v0/b/web-development-etic.appspot.com/o/ska%2Fbad%20manners%2Flooney%20tunes%2F09%20-%20Bad%20Manners%20-%20Suicide.mp3?alt=media&token=8e8d2122-3968-4d96-9744-e53e36d1f782"
+                  },
+                  {
+                    "id": "music/ska/bad manners/looney tunes/10 - Bad Manners - Undersea Adventures of Ivor the Engine.mp3",
+                    "type": "file",
+                    "name": "10 - Bad Manners - Undersea Adventures of Ivor the Engine",
+                    "url": "https://firebasestorage.googleapis.com/v0/b/web-development-etic.appspot.com/o/ska%2Fbad%20manners%2Flooney%20tunes%2F10%20-%20Bad%20Manners%20-%20Undersea%20Adventures%20of%20Ivor%20the%20Engine.mp3?alt=media&token=7f68c22b-fa71-4634-ac82-110cb79bac04"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "music/rock",
+        "type": "folder",
+        "name": "rock",
+        "children": [
+          {
+            "id": "music/rock/Down",
+            "type": "folder",
+            "name": "Down",
+            "children": [
+              {
+                "id": "music/rock/Down/Nola",
+                "type": "folder",
+                "name": "Nola",
+                "children": [
+                  {
+                    "id": "music/rock/Down/Nola/Down - Eyes Of The South.mp3",
+                    "type": "file",
+                    "name": "Down - Eyes Of The South",
+                    "url": "https://firebasestorage.googleapis.com/v0/b/web-development-etic.appspot.com/o/rock%2FDown%2FNola%2FDown%20-%20Eyes%20Of%20The%20South.mp3?alt=media&token=721e7d65-d5ed-4ade-acae-bbbaf2c70ca8"
+                  },
+                  {
+                    "id": "music/rock/Down/Nola/Down - Jail.mp3",
+                    "type": "file",
+                    "name": "Down - Jail",
+                    "url": "https://firebasestorage.googleapis.com/v0/b/web-development-etic.appspot.com/o/rock%2FDown%2FNola%2FDown%20-%20Jail.mp3?alt=media&token=c7260eb3-5cf0-49b2-97b1-61d77151145b"
+                  },
+                  {
+                    "id": "music/rock/Down/Nola/Down - Pillars Of Eternity.mp3",
+                    "type": "file",
+                    "name": "Down - Pillars Of Eternity",
+                    "url": "https://firebasestorage.googleapis.com/v0/b/web-development-etic.appspot.com/o/rock%2FDown%2FNola%2FDown%20-%20Pillars%20Of%20Eternity.mp3?alt=media&token=74070058-17bb-48df-8b20-b75c4157560e"
+                  },
+                  {
+                    "id": "music/rock/Down/Nola/Down - Losing All.mp3",
+                    "type": "file",
+                    "name": "Down - Losing All",
+                    "url": "https://firebasestorage.googleapis.com/v0/b/web-development-etic.appspot.com/o/rock%2FDown%2FNola%2FDown%20-%20Losing%20All.mp3?alt=media&token=c3e2eec9-8e32-41e5-97a1-3243c2605130"
+                  },
+                  {
+                    "id": "music/rock/Down/Nola/Down - Stone The Crow.mp3",
+                    "type": "file",
+                    "name": "Down - Stone The Crow",
+                    "url": "https://firebasestorage.googleapis.com/v0/b/web-development-etic.appspot.com/o/rock%2FDown%2FNola%2FDown%20-%20Stone%20The%20Crow.mp3?alt=media&token=2d586c6f-d3ca-4418-8c35-00ea2c8f133b"
+                  },
+                  {
+                    "id": "music/rock/Down/Nola/Down - Rehab.mp3",
+                    "type": "file",
+                    "name": "Down - Rehab",
+                    "url": "https://firebasestorage.googleapis.com/v0/b/web-development-etic.appspot.com/o/rock%2FDown%2FNola%2FDown%20-%20Rehab.mp3?alt=media&token=dfa49b4f-8ee5-45a8-a985-f70a3566f319"
+                  },
+                  {
+                    "id": "music/rock/Down/Nola/Down - Bury Me In Smoke.mp3",
+                    "type": "file",
+                    "name": "Down - Bury Me In Smoke",
+                    "url": "https://firebasestorage.googleapis.com/v0/b/web-development-etic.appspot.com/o/rock%2FDown%2FNola%2FDown%20-%20Bury%20Me%20In%20Smoke.mp3?alt=media&token=ea90a588-d719-4441-b72a-26e4b30ef23c"
+                  },
+                  {
+                    "id": "music/rock/Down/Nola/Down - Temptations Wings.mp3",
+                    "type": "file",
+                    "name": "Down - Temptations Wings",
+                    "url": "https://firebasestorage.googleapis.com/v0/b/web-development-etic.appspot.com/o/rock%2FDown%2FNola%2FDown%20-%20Temptations%20Wings.mp3?alt=media&token=0a2fd293-333e-41fa-8cbc-5dea0a8355a7"
+                  },
+                  {
+                    "id": "music/rock/Down/Nola/Down - Pray For The Locust.mp3",
+                    "type": "file",
+                    "name": "Down - Pray For The Locust",
+                    "url": "https://firebasestorage.googleapis.com/v0/b/web-development-etic.appspot.com/o/rock%2FDown%2FNola%2FDown%20-%20Pray%20For%20The%20Locust.mp3?alt=media&token=e656e01c-7173-4f04-9c61-36bf764bda26"
+                  },
+                  {
+                    "id": "music/rock/Down/Nola/Down - Hail The Leaf.mp3",
+                    "type": "file",
+                    "name": "Down - Hail The Leaf",
+                    "url": "https://firebasestorage.googleapis.com/v0/b/web-development-etic.appspot.com/o/rock%2FDown%2FNola%2FDown%20-%20Hail%20The%20Leaf.mp3?alt=media&token=ee3786ab-388c-4115-9e2e-fb9740651432"
+                  },
+                  {
+                    "id": "music/rock/Down/Nola/Down - Lifer.mp3",
+                    "type": "file",
+                    "name": "Down - Lifer",
+                    "url": "https://firebasestorage.googleapis.com/v0/b/web-development-etic.appspot.com/o/rock%2FDown%2FNola%2FDown%20-%20Lifer.mp3?alt=media&token=a0737b0d-f757-40c3-9bc3-197e82ba2f14"
+                  },
+                  {
+                    "id": "music/rock/Down/Nola/Down - Underneath Everything.mp3",
+                    "type": "file",
+                    "name": "Down - Underneath Everything",
+                    "url": "https://firebasestorage.googleapis.com/v0/b/web-development-etic.appspot.com/o/rock%2FDown%2FNola%2FDown%20-%20Underneath%20Everything.mp3?alt=media&token=44b78f2c-5130-41a4-b70f-3e540bd900bc"
+                  },
+                  {
+                    "id": "music/rock/Down/Nola/Down - Swan Song.mp3",
+                    "type": "file",
+                    "name": "Down - Swan Song",
+                    "url": "https://firebasestorage.googleapis.com/v0/b/web-development-etic.appspot.com/o/rock%2FDown%2FNola%2FDown%20-%20Swan%20Song.mp3?alt=media&token=8a093d15-00d1-4e8d-b0f1-439600939fcc"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  { "type": "open", "name": "open..." }
+]
