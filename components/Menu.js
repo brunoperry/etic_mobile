@@ -5,19 +5,16 @@ import ToggleButton from "./ToggleButton.js";
 export default class Menu extends Component {
   #menuData;
   #menuContainer;
+  #menuButton;
   #currentList = null;
   #isOpen = false;
 
   constructor(elementId, callback) {
     super(elementId, callback);
 
-    const menuButton = new ToggleButton("#menu-button", (value) => {
-      this.#isOpen = !this.#isOpen;
-      this.#isOpen ? this.open() : this.close();
-
-      menuButton.toggle();
+    this.#menuButton = new ToggleButton("#menu-button", (value) => {
+      this.#isOpen ? this.close() : this.open();
     });
-    menuButton.toggle();
 
     this.#menuContainer = this.element.querySelector("#menu-container");
   }
@@ -36,15 +33,13 @@ export default class Menu extends Component {
       ul.appendChild(listButton.element);
     });
 
-    if (this.#currentList) {
-      this.#currentList.style.transform = "translateX(-100%)";
-    }
     this.#menuContainer.appendChild(ul);
     this.#currentList = ul;
   }
 
   #deleteList(index = null) {
     if (index !== null) {
+      //delete indexed list
     } else {
       this.#menuContainer.innerHTML = "";
       this.#currentList = null;
@@ -52,14 +47,18 @@ export default class Menu extends Component {
   }
 
   open() {
+    this.#menuButton.toggle(1);
     this.#createList(this.#menuData);
     this.#menuContainer.style.transform = "scaleY(1)";
     this.callback({ type: "opening" });
+    this.#isOpen = true;
   }
 
   close() {
+    this.#menuButton.toggle(0);
     this.#deleteList();
     this.#menuContainer.style.transform = "scaleY(0)";
+    this.#isOpen = false;
   }
 
   get data() {

@@ -12,9 +12,11 @@ export default class RangeBar extends Component {
 
     this.#rangeInput.oninput = () => {
       const value = this.#rangeInput.value;
-
       this.#rangeBar.style.transform = `scaleX(${value / 100})`;
       this.callback(value);
     };
+
+    const currentValue = parseFloat(this.#rangeInput.value);
+    this.#rangeBar.style.transform = `scaleX(${currentValue / 100})`;
   }
 }

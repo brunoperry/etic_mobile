@@ -30,6 +30,11 @@ const setupLayout = () => {
       case "opening":
         info.close();
         break;
+      case "music":
+      case "file":
+        info.update(value);
+        menu.close();
+        break;
     }
     console.log("menu", value);
   });

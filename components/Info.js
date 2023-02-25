@@ -11,13 +11,13 @@ export default class Info extends Component {
     this.#infoContainer = this.element.querySelector("#info-container");
 
     this.#infoButton = new ToggleButton("#info-button", (value) => {
-      this.callback(value);
-      !this.#isOpened ? this.open() : this.close();
+      this.#isOpened ? this.close() : this.open();
+      this.callback(this.#isOpened);
     });
   }
 
   update(data) {
-    this.infoButton.setText(data.name);
+    this.#infoButton.setText(data.name);
   }
 
   open() {
