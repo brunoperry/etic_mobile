@@ -43,27 +43,53 @@ label {
   font-size: var(--font-size);
   font-weight: var(--font-bold);
   text-transform: uppercase;
+  font-weight: bold;
 }
 
-button,
-label {
+li label {
+  color: var(--secondary-color);
+}
+
+button {
   border: none;
   background-color: transparent;
   cursor: pointer;
   flex: 1;
 }
 
+input[type="range"] {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+}
+
+/* INFO */
+#info {
+  display: flex;
+  height: var(--button-height);
+}
+
+#info-container {
+  position: absolute;
+  inset: 0;
+  top: var(--button-height);
+  bottom: var(--button-height);
+  display: flex;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  background-color: var(--terciary-color);
+  transform: scaleY(0);
+  transform-origin: top;
+  transition: transform var(--transition-speed) ease;
+  z-index: 100;
+}
+
+/* CONTROLLER */
 #controller {
   display: flex;
   justify-content: space-between;
   align-items: center;
   gap: 10px;
-}
-
-input[type="range"] {
-  position: absolute;
-  inset: 0;
-  opacity: 0;
 }
 
 .range {
@@ -83,49 +109,28 @@ input[type="range"] {
   width: 100%;
 }
 
-#scrub>.range-bar {
-  background-color: #181717;
-}
-
-#info,
+/* MENU */
 #menu {
   display: flex;
   height: var(--button-height);
-}
-
-#menu {
   justify-self: end;
-}
-
-.toggle {}
-
-.toggle>* {
-  display: none;
 }
 
 #menu-container {
   position: absolute;
   inset: 0;
   bottom: var(--button-height);
-
-  display: flex;
-
-  background-color: var(--primary-color);
-
-  transform: scaleY(0);
-  transform-origin: bottom;
-  transition: transform var(--transition-speed) ease;
-}
-
-#menu-container .lists-container {
-  position: relative;
   display: flex;
   overflow-x: hidden;
   overflow-y: scroll;
-  flex: 1;
+  background-color: var(--primary-color);
+  transform: scaleY(0);
+  transform-origin: bottom;
+  transition: transform var(--transition-speed) ease;
+  z-index: 101;
 }
 
-.lists-container ul {
+#menu-container ul {
   position: absolute;
   inset: 0;
 
@@ -137,10 +142,9 @@ input[type="range"] {
   transition: var(--transition-speed) ease;
 }
 
-.lists-container li {
+#menu-container li {
   display: grid;
   grid-template-columns: auto 45px;
-  /* justify-content: space-between; */
   max-height: 72px;
   cursor: pointer;
   gap: 10px;
@@ -148,6 +152,6 @@ input[type="range"] {
   flex: 1;
 }
 
-li label {
-  color: var(--secondary-color);
+.toggle>* {
+  display: none;
 }

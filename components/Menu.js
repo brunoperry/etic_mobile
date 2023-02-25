@@ -5,15 +5,12 @@ import ToggleButton from "./ToggleButton.js";
 export default class Menu extends Component {
   #menuData;
   #menuContainer;
-  #menuListsContainer;
   #isOpen = false;
 
-  constructor(elementId, data) {
-    super(elementId);
+  constructor(elementId, callback) {
+    super(elementId, callback);
 
-    const menuButton = new ToggleButton("#menu-button");
-
-    menuButton.onClick((value) => {
+    const menuButton = new ToggleButton("#menu-button", (value) => {
       this.#isOpen = !this.#isOpen;
       this.#isOpen ? this.open() : this.close();
 
@@ -22,42 +19,49 @@ export default class Menu extends Component {
     menuButton.toggle();
 
     this.#menuContainer = this.element.querySelector("#menu-container");
-    this.#menuListsContainer =
-      this.#menuContainer.querySelector(".lists-container");
-    this.#menuData = data;
   }
 
   #createList(data) {
     const ul = document.createElement("ul");
 
     data.forEach((itemData) => {
-      const listButton = new ListButton(itemData);
-
-      listButton.onClick(() => {
-        // PARA FAZER NA PROXIMA AULA
+      const listButton = new ListButton(itemData, () => {
         if (itemData.type === "folder") {
           this.#createList(itemData.children);
+        } else {
+          this.callback(itemData);
         }
-        console.log("clicked: ", itemData);
       });
-
       ul.appendChild(listButton.element);
     });
 
-    this.#menuListsContainer.appendChild(ul);
+    this.#menuContainer.appendChild(ul);
   }
 
-  #deleteList(index) {
-    this.#menuListsContainer.innerHTML = "";
+  #deleteList(index = null) {
+    if (index !== null) {
+    } else {
+      this.#menuContainer.innerHTML = "";
+    }
   }
 
   open() {
     this.#createList(this.#menuData);
     this.#menuContainer.style.transform = "scaleY(1)";
+    this.callback({ type: "opening" });
   }
 
   close() {
     this.#deleteList();
     this.#menuContainer.style.transform = "scaleY(0)";
+  }
+
+  get data() {
+    return this.#menuData;
+  }
+
+  set data(val) {
+    this.#menuData = val;
+    //if opened, paint trail.
   }
 }

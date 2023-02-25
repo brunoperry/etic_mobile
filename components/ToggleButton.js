@@ -4,11 +4,9 @@ export default class ToggleButton extends Button {
   #togglesList;
   #currentToggleIndex = 0;
 
-  constructor(elemID) {
-    super(elemID);
-
+  constructor(elemID, callback) {
+    super(elemID, callback);
     this.#togglesList = this.element.children;
-
     this.toggle(0);
   }
 
@@ -23,12 +21,5 @@ export default class ToggleButton extends Button {
       }
     }
     this.#togglesList[this.#currentToggleIndex].style.display = "initial";
-
-    // this.#togglesList[this.#currentToggleIndex].style.display = "none";
-    // this.#currentToggleIndex++;
-    // if (this.#currentToggleIndex >= this.#togglesList.length) {
-    //   this.#currentToggleIndex = 0;
-    // }
-    // this.#togglesList[this.#currentToggleIndex].style.display = "initial";
   }
 }
