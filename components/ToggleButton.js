@@ -20,6 +20,6 @@ export default class ToggleButton extends Button {
         this.#currentToggleIndex = 0;
       }
     }
-    this.#togglesList[this.#currentToggleIndex].style.display = "initial";
+    this.#togglesList[this.#currentToggleIndex].style.display = "block";
   }
 }

@@ -5,6 +5,7 @@ import ToggleButton from "./ToggleButton.js";
 export default class Menu extends Component {
   #menuData;
   #menuContainer;
+  #currentList = null;
   #isOpen = false;
 
   constructor(elementId, callback) {
@@ -35,13 +36,18 @@ export default class Menu extends Component {
       ul.appendChild(listButton.element);
     });
 
+    if (this.#currentList) {
+      this.#currentList.style.transform = "translateX(-100%)";
+    }
     this.#menuContainer.appendChild(ul);
+    this.#currentList = ul;
   }
 
   #deleteList(index = null) {
     if (index !== null) {
     } else {
       this.#menuContainer.innerHTML = "";
+      this.#currentList = null;
     }
   }
 

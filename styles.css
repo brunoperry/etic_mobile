@@ -2,6 +2,7 @@
   --primary-color: #ffc80b;
   --secondary-color: #053160;
   --terciary-color: #031e3c;
+  --quadriary-color: #FFE96D;
   --transition-speed: .2s;
 
   --font-size: clamp(2.5rem, 3vw, 3.5rem);
@@ -15,6 +16,8 @@
   padding: 0;
   margin: 0;
   box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 
@@ -44,6 +47,9 @@ label {
   font-weight: var(--font-bold);
   text-transform: uppercase;
   font-weight: bold;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }
 
 li label {
@@ -51,10 +57,20 @@ li label {
 }
 
 button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   border: none;
   background-color: transparent;
   cursor: pointer;
+  max-width: 100%;
   flex: 1;
+  padding: 10px;
+}
+
+li:active,
+button:active {
+  scale: 0.9;
 }
 
 input[type="range"] {
@@ -66,7 +82,8 @@ input[type="range"] {
 /* INFO */
 #info {
   display: flex;
-  height: var(--button-height);
+  max-height: var(--button-height);
+  flex: 1;
 }
 
 #info-container {
@@ -90,14 +107,17 @@ input[type="range"] {
   justify-content: space-between;
   align-items: center;
   gap: 10px;
+  flex: 1;
+}
+
+#volume {
+  flex: 1;
 }
 
 .range {
   position: relative;
   display: flex;
   background-color: var(--terciary-color);
-  flex: 1;
-  max-height: 160px;
 }
 
 .range-bar {
@@ -112,7 +132,8 @@ input[type="range"] {
 /* MENU */
 #menu {
   display: flex;
-  height: var(--button-height);
+  max-height: var(--button-height);
+  flex: 1;
   justify-self: end;
 }
 
@@ -123,7 +144,7 @@ input[type="range"] {
   display: flex;
   overflow-x: hidden;
   overflow-y: scroll;
-  background-color: var(--primary-color);
+  background-color: var(--quadriary-color);
   transform: scaleY(0);
   transform-origin: bottom;
   transition: transform var(--transition-speed) ease;
@@ -133,12 +154,11 @@ input[type="range"] {
 #menu-container ul {
   position: absolute;
   inset: 0;
-
   display: flex;
   flex-direction: column;
   flex: 1;
-
   list-style: none;
+  transform: translateX(100%);
   transition: var(--transition-speed) ease;
 }
 
