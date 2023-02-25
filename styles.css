@@ -3,7 +3,7 @@
   --secondary-color: #053160;
   --terciary-color: #031e3c;
   --quadriary-color: #FFE96D;
-  --transition-speed: .2s;
+  --speed: .2s;
 
   --font-size: clamp(2.5rem, 3vw, 3.5rem);
   --font-bold: 600;
@@ -96,7 +96,7 @@ input[type="range"] {
   background-color: var(--terciary-color);
   transform: scaleY(0);
   transform-origin: top;
-  transition: transform var(--transition-speed) ease;
+  transition: transform var(--speed) ease;
   z-index: 100;
 }
 
@@ -148,8 +148,12 @@ input[type="range"] {
   background-color: var(--quadriary-color);
   transform: scaleY(0);
   transform-origin: bottom;
-  transition: transform var(--transition-speed) ease;
+  transition: transform var(--speed) ease;
   z-index: 101;
+}
+
+#menu-back-button {
+  display: none;
 }
 
 #menu-container ul {
@@ -160,7 +164,8 @@ input[type="range"] {
   flex: 1;
   list-style: none;
   background-color: var(--quadriary-color);
-  transition: var(--transition-speed) ease;
+  transform: translateX(100%);
+  transition: var(--speed) ease;
 }
 
 #menu-container li {

@@ -1,3 +1,4 @@
+import Button from "./Button.js";
 import Component from "./Component.js";
 import ListButton from "./ListButton.js";
 import ToggleButton from "./ToggleButton.js";
@@ -6,6 +7,7 @@ export default class Menu extends Component {
   #menuData;
   #menuContainer;
   #menuButton;
+  #backButton;
   #currentList = null;
   #isOpen = false;
 
@@ -14,6 +16,11 @@ export default class Menu extends Component {
 
     this.#menuButton = new ToggleButton("#menu-button", (value) => {
       this.#isOpen ? this.close() : this.open();
+    });
+
+    this.#backButton = new Button("#menu-back-button", (value) => {
+      const index = this.#menuContainer.children.length - 1;
+      this.#deleteList(index);
     });
 
     this.#menuContainer = this.element.querySelector("#menu-container");
@@ -33,24 +40,44 @@ export default class Menu extends Component {
       ul.appendChild(listButton.element);
     });
 
+    if (this.#currentList) {
+      this.#currentList.style.transform = "translateX(-100%)";
+    }
     this.#menuContainer.appendChild(ul);
     this.#currentList = ul;
+
+    requestAnimationFrame(() => (this.#currentList.style.transform = "translateX(0)"));
+
+    this.#menuContainer.children.length > 1
+      ? (this.#backButton.displayed = true)
+      : (this.#backButton.displayed = false);
   }
 
   #deleteList(index = null) {
     if (index !== null) {
-      //delete indexed list
+      console.log(index);
+      const list = this.#menuContainer.children[index];
+      this.#menuContainer.removeChild(list);
+      this.#currentList =
+        this.#menuContainer.children[this.#menuContainer.children.length - 1];
+      this.#currentList.style.transform = "translateX(0)";
     } else {
       this.#menuContainer.innerHTML = "";
       this.#currentList = null;
     }
+    this.#menuContainer.children.length > 1
+      ? (this.#backButton.displayed = true)
+      : (this.#backButton.displayed = false);
   }
 
   open() {
     this.#menuButton.toggle(1);
-    this.#createList(this.#menuData);
     this.#menuContainer.style.transform = "scaleY(1)";
     this.callback({ type: "opening" });
+
+    setTimeout(() => {
+      this.#createList(this.#menuData);
+    }, this.SPEED);
     this.#isOpen = true;
   }
 
