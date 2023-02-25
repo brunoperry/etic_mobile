@@ -41,8 +41,4 @@ const setupLayout = () => {
   });
 
   const menu = new Menu("#menu", appData);
-
-  // Show all buttons on load
-  infoButton.toggle();
-  actionButton.toggle();
 };

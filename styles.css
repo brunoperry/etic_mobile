@@ -2,7 +2,7 @@
   --primary-color: #ffc80b;
   --secondary-color: #053160;
   --terciary-color: #031e3c;
-  --transition-speed: 200ms;
+  --transition-speed: .2s;
 
   --font-size: clamp(2.5rem, 3vw, 3.5rem);
   --font-bold: 600;
@@ -15,6 +15,7 @@
   padding: 0;
   margin: 0;
   box-sizing: border-box;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 
 html,
@@ -29,7 +30,7 @@ body {
   flex-direction: column;
   justify-content: space-between;
 
-  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   background-color: var(--secondary-color);
 
   max-width: 800px;
@@ -37,17 +38,18 @@ body {
   margin: auto;
 }
 
-button {
-  border: none;
-  background-color: transparent;
-
+label {
   color: var(--primary-color);
   font-size: var(--font-size);
   font-weight: var(--font-bold);
   text-transform: uppercase;
+}
 
+button,
+label {
+  border: none;
+  background-color: transparent;
   cursor: pointer;
-
   flex: 1;
 }
 
@@ -81,7 +83,7 @@ input[type="range"] {
   width: 100%;
 }
 
-#scrub > .range-bar {
+#scrub>.range-bar {
   background-color: #181717;
 }
 
@@ -95,10 +97,9 @@ input[type="range"] {
   justify-self: end;
 }
 
-.toggle {
-}
+.toggle {}
 
-.toggle > * {
+.toggle>* {
   display: none;
 }
 
@@ -116,7 +117,7 @@ input[type="range"] {
   transition: transform var(--transition-speed) ease;
 }
 
-#menu-container > .lists-container {
+#menu-container .lists-container {
   position: relative;
   display: flex;
   overflow-x: hidden;
@@ -124,7 +125,7 @@ input[type="range"] {
   flex: 1;
 }
 
-#menu-container > .lists-container > ul {
+.lists-container ul {
   position: absolute;
   inset: 0;
 
@@ -136,18 +137,17 @@ input[type="range"] {
   transition: var(--transition-speed) ease;
 }
 
-#menu-container > .lists-container > ul li {
-  display: flex;
-  justify-content: space-between;
-  gap: 10px;
-  flex: 1;
-
-  font-size: var(--font-size);
-  font-weight: var(--font-light);
-  text-transform: uppercase;
-  color: var(--secondary-color);
-
-  padding: 10px;
-  max-height: var(--button-height);
+.lists-container li {
+  display: grid;
+  grid-template-columns: auto 45px;
+  /* justify-content: space-between; */
+  max-height: 72px;
   cursor: pointer;
+  gap: 10px;
+  padding: 10px;
+  flex: 1;
+}
+
+li label {
+  color: var(--secondary-color);
 }
