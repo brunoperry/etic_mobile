@@ -50,44 +50,13 @@ window.onload = async () => {
 };
 
 const initialize = async () => {
-  if ("serviceWorker" in navigator) {
-    try {
-      await navigator.serviceWorker.register("/service-worker.js");
-    } catch (error) {
-      console.log(error);
-      return;
-    }
-  } else {
-    throw new Error("No PWA Support! Try another browser.");
-    return;
-  }
-
-  try {
-    const request = "app_data.json";
-    const cache = await caches.open("app-cache");
-    const response = await cache.match(request);
-
-    if (response) {
-      appData = await response.json();
-    } else {
-      const networkResponse = await fetch(request);
-      console.log("Response from network:", networkResponse);
-
-      await cache.put(request, networkResponse.clone());
-
-      appData = await networkResponse.json();
-    }
-  } catch (error) {
-    console.error("Error fetching from cache or network:", error);
-  }
-
   // music app model creating:
   // const fb = new Firebase();
   // appData = await fb.initialize();
   // console.log(JSON.stringify(appData));
 
-  // const req = await fetch("app_data.json");
-  // appData = await req.json();
+  const req = await fetch("app_data.json");
+  appData = await req.json();
 };
 
 const setupAudio = () => {
@@ -166,6 +135,11 @@ const setupLayout = () => {
             break;
           case "open":
             document.querySelector("#file-input").click();
+            break;
+          case "reset":
+            const req = await fetch("/reset");
+            const res = await req.json();
+            console.log(res);
             break;
         }
         break;
