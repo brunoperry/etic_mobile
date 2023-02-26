@@ -38,10 +38,6 @@ const initialize = async (api_url) => {
         type: "reset",
         name: "reset",
       },
-      {
-        type: "exit",
-        name: "exit",
-      },
     ];
   } catch (error) {
     console.log(error);
