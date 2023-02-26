@@ -2,25 +2,46 @@ import AudioPlayer from "./components/AudioPlayer.js";
 import Controller from "./components/Controller.js";
 import Info from "./components/Info.js";
 import Menu from "./components/Menu.js";
+import PeekABoo from "./components/PeekABoo.js";
 import RangeBar from "./components/RangeBar.js";
 
 let appData;
 let audioPlayer;
 
+let peekaboo;
 let info;
 let controller;
 let volumeBar;
 let menu;
 
-window.onload = async () => {
-  const req = await fetch("app_data.json");
-  appData = await req.json();
+const API_URL = "https://purring-cyclic-jackrabbit.glitch.me/";
 
+window.onload = async () => {
+  await initialize(API_URL);
   setupLayout();
   setupAudio();
 };
 
+const initialize = async (api_url) => {
+  const req = await fetch(api_url);
+  const apiData = await req.json();
+  appData = [
+    ...apiData,
+    {
+      type: "open",
+      name: "open...",
+    },
+    {
+      type: "reset",
+      name: "reset",
+    },
+  ];
+};
+
 const setupLayout = () => {
+  peekaboo = new PeekABoo("#peek-a-boo", () => {
+    console.log("peekaboo");
+  });
   info = new Info("#info", (value) => {
     console.log("info", value);
   });
@@ -58,6 +79,12 @@ const setupLayout = () => {
         break;
       case "open":
         document.querySelector("#file-input").click();
+        break;
+
+      case "reset":
+        menu.close();
+        await initialize(`${API_URL}/reset`);
+        peekaboo.show("Data updated!");
         break;
     }
   });

@@ -3,8 +3,10 @@
   --secondary-color: #053160;
   --terciary-color: #031e3c;
   --quadriary-color: #FFE96D;
-
+  --success-color: #37d402;
+  --warning-color: #ff9e03;
   --error-color: #d40a0a;
+
   --speed: .2s;
 
   --font-size: clamp(2.5rem, 3vw, 3.5rem);
@@ -13,6 +15,12 @@
 
   --button-height: 92px;
 }
+
+::-webkit-scrollbar {
+  width: 0px;
+  opacity: 0;
+}
+
 
 * {
   padding: 0;
@@ -189,6 +197,36 @@ input[type="file"] {
   flex: 1;
 }
 
+#menu-container li.leaf {
+  display: flex;
+}
+
+#peek-a-boo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  inset: 0;
+  max-height: 32px;
+  color: white;
+  font-weight: 500;
+  font-size: 12px;
+  z-index: 200;
+  transform: translateY(-100%);
+  animation-duration: var(--speed);
+  animation-fill-mode: forwards;
+}
+
 .toggle>* {
   display: none;
+}
+
+@keyframes peekaboo {
+  0% {
+    transform: translateY(-100%);
+  }
+
+  100% {
+    transform: translateY(0);
+  }
 }
