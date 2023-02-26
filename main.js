@@ -4,6 +4,8 @@ import Info from "./components/Info.js";
 import Menu from "./components/Menu.js";
 import RangeBar from "./components/RangeBar.js";
 
+const API_URL = "https://purring-cyclic-jackrabbit.glitch.me/";
+
 let appData;
 let audio;
 
@@ -12,7 +14,7 @@ let controller;
 let volumeBar;
 
 window.onload = async () => {
-  const req = await fetch("app_data.json");
+  const req = await fetch(API_URL);
   appData = await req.json();
 
   setupLayout();
