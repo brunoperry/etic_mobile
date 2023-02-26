@@ -201,6 +201,10 @@ input[type="file"] {
   display: flex;
 }
 
+li .toggle {
+  justify-content: flex-end;
+}
+
 #peek-a-boo {
   display: flex;
   justify-content: center;
@@ -215,6 +219,11 @@ input[type="file"] {
   transform: translateY(-100%);
   animation-duration: var(--speed);
   animation-fill-mode: forwards;
+}
+
+.toggle {
+  display: flex;
+  align-items: center;
 }
 
 .toggle>* {
