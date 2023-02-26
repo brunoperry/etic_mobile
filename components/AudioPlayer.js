@@ -21,9 +21,10 @@ export default class AudioPlayer {
       this.currentState = "pause";
       this.callback(this.currentState);
     };
-    this.#audio.onerror = () => {
+    this.#audio.onerror = (e) => {
+      e.preventDefault();
       this.currentState = "error";
-      this.callback(this.currentState);
+      this.callback(this.currentState, this.#audio.error);
     };
     this.#audio.onloadstart = () => {
       this.currentState = "loading";
@@ -35,11 +36,15 @@ export default class AudioPlayer {
     };
   }
 
-  next() {}
+  previous() {
+    this.#trackIndex--;
+    if (this.#trackIndex < 0) this.#trackIndex = this.#playlist.length - 1;
+    this.play(this.#playlist[this.#trackIndex], this.#playlist);
+  }
 
-  async play(track, playlist = null) {
+  async play(track = null, playlist = null) {
     this.#playlist = playlist || this.#playlist;
-    this.currentTrack = track;
+    this.currentTrack = track || this.currentTrack;
 
     if (!this.#audio.paused) this.#audio.pause();
 
@@ -52,10 +57,14 @@ export default class AudioPlayer {
       return false;
     }
   }
-
-  pause() {}
-
-  previous() {}
+  pause() {
+    this.#audio.pause();
+  }
+  next() {
+    this.#trackIndex++;
+    if (this.#trackIndex >= this.#playlist.length) this.#trackIndex = 0;
+    this.play(this.#playlist[this.#trackIndex], this.#playlist);
+  }
 
   get currentTrack() {
     return this.#playlist[this.#trackIndex];

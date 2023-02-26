@@ -5,10 +5,10 @@
     "type": "folder",
     "children": [
       {
-        "id": "radios/Radio A",
-        "name": "Radio A",
+        "id": "radios/bassdrive",
+        "name": "bassdrive",
         "type": "music",
-        "url": "link para o stream de radio"
+        "url": "https://bassdrive.radioca.st/stream"
       },
       {
         "id": "radios/Radio B",
