@@ -20,22 +20,28 @@ window.onload = async () => {
   await initialize(API_URL);
   setupLayout();
   setupAudio();
+
+  console.log("ready!");
 };
 
 const initialize = async (api_url) => {
-  const req = await fetch(api_url);
-  const apiData = await req.json();
-  appData = [
-    ...apiData,
-    {
-      type: "open",
-      name: "open...",
-    },
-    {
-      type: "reset",
-      name: "reset",
-    },
-  ];
+  try {
+    const req = await fetch(api_url);
+    const apiData = await req.json();
+    appData = [
+      ...apiData,
+      {
+        type: "open",
+        name: "open...",
+      },
+      {
+        type: "reset",
+        name: "reset",
+      },
+    ];
+  } catch (error) {
+    console.log(error);
+  }
 };
 
 const setupLayout = () => {
