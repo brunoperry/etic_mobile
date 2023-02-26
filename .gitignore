@@ -1,3 +1,5 @@
 mobile_development
 node_modules
 .DS_Store
+.vscode/
+.gitignore

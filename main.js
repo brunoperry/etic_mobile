@@ -83,6 +83,7 @@ const setupLayout = () => {
       case "reset":
         menu.close();
         await initialize(`${API_URL}/reset`);
+        menu.data = appData;
         peekaboo.show("Data updated!");
         break;
     }

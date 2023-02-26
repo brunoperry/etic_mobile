@@ -55,7 +55,6 @@ export default class Menu extends Component {
 
   #deleteList(index = null) {
     if (index !== null) {
-      console.log(index);
       const list = this.#menuContainer.children[index];
       this.#menuContainer.removeChild(list);
       this.#currentList =
