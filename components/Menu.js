@@ -88,6 +88,11 @@ export default class Menu extends Component {
     this.#isOpen = false;
   }
 
+  setTrail(trail) {
+    if (!this.#isOpen) return;
+    console.log(trail);
+  }
+
   get data() {
     return this.#menuData;
   }
