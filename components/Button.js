@@ -12,7 +12,17 @@ export default class Button extends Component {
     this.element.onclick = () => this.callback();
   }
 
-  setText(text) {
-    this.element.querySelector("label").innerText = text;
+  get text() {
+    return this.element.querySelector("label").innerText;
+  }
+  set text(val) {
+    this.element.querySelector("label").innerText = val;
+  }
+
+  get color() {
+    return this.element.querySelector("label").style.color;
+  }
+  set color(val) {
+    this.element.querySelector("label").style.color = val;
   }
 }

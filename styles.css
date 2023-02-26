@@ -3,6 +3,8 @@
   --secondary-color: #053160;
   --terciary-color: #031e3c;
   --quadriary-color: #FFE96D;
+
+  --error-color: #d40a0a;
   --speed: .2s;
 
   --font-size: clamp(2.5rem, 3vw, 3.5rem);

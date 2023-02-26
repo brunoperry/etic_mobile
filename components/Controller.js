@@ -3,26 +3,31 @@ import Component from "./Component.js";
 import ToggleButton from "./ToggleButton.js";
 
 export default class Controller extends Component {
+  currentState = "paused";
+  #previousButton;
   #actionButton;
+  #nextButton;
   constructor(elemID, callback) {
     super(elemID, callback);
 
-    const previousButton = new Button("#previous-button", (value) => {
+    this.#previousButton = new Button("#previous-button", (value) => {
       this.callback("previous");
     });
 
-    const nextButton = new Button("#next-button", (value) => {
+    this.#nextButton = new Button("#next-button", (value) => {
       this.callback("next");
     });
 
     this.#actionButton = new ToggleButton("#action-button", (value) => {
-      this.callback("action");
+      if (this.currentState === "loading") return;
+      this.currentState === "pause" ? this.callback("play") : this.callback("pause");
     });
   }
 
   setState(state) {
+    this.currentState = state;
     let val = 0;
-    switch (state) {
+    switch (this.currentState) {
       case "play":
         val = 0;
         break;
@@ -31,6 +36,9 @@ export default class Controller extends Component {
         break;
       case "loading":
         val = 2;
+        break;
+      case "error":
+        val = 3;
         break;
     }
     this.#actionButton.toggle(val);

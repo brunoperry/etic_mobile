@@ -1,42 +1,77 @@
+import AudioPlayer from "./components/AudioPlayer.js";
 import Controller from "./components/Controller.js";
 import Info from "./components/Info.js";
 import Menu from "./components/Menu.js";
 import RangeBar from "./components/RangeBar.js";
 
 let appData;
+let audio;
+
+let info;
+let controller;
+let volumeBar;
 
 window.onload = async () => {
   const req = await fetch("app_data.json");
   appData = await req.json();
 
   setupLayout();
+  setupAudio();
+};
+
+const setupAudio = () => {
+  audio = new AudioPlayer((action) => {
+    controller.setState(action);
+
+    if (action === "error") {
+      info.update({
+        name: audio.currentTrack.name,
+        type: "error",
+      });
+    }
+  });
+  audio.volume = volumeBar.value;
 };
 
 const setupLayout = () => {
-  const info = new Info("#info", (value) => {
+  info = new Info("#info", (value) => {
     console.log("info", value);
   });
 
-  const controller = new Controller("#controller", (value) => {
+  controller = new Controller("#controller", (value) => {
     console.log("controller", value);
   });
 
-  const volumeBar = new RangeBar("#volume", (value) => {
+  volumeBar = new RangeBar("#volume", (value) => {
     console.log("volume", value);
   });
 
-  const menu = new Menu("#menu", (value) => {
+  const menu = new Menu("#menu", async (value) => {
     switch (value.type) {
       case "opening":
         info.close();
         break;
       case "music":
       case "file":
-        info.update(value);
+        await audio.play(value, fetchPlaylist(appData, value.id));
         menu.close();
         break;
     }
-    console.log("menu", value);
   });
   menu.data = appData;
+};
+
+const fetchPlaylist = (node, itemID) => {
+  let item = null;
+  for (let i = 0; i < node.length; i++) {
+    const n = node[i];
+    if (n.children) {
+      item = fetchPlaylist(n.children, itemID);
+    }
+    if (n.id === itemID) {
+      item = node;
+    }
+    if (item) break;
+  }
+  return item;
 };

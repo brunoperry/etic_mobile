@@ -17,7 +17,9 @@ export default class Info extends Component {
   }
 
   update(data) {
-    this.#infoButton.setText(data.name);
+    this.#infoButton.text = data.name;
+    this.#infoButton.color =
+      data.type === "error" ? "var(--error-color)" : "var(--primary-color)";
   }
 
   open() {
