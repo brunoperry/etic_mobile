@@ -72,7 +72,6 @@ export default class AudioPlayer {
   get volume() {
     return this.#audio.volume;
   }
-
   set volume(val) {
     this.#audio.volume = val / 100;
   }
