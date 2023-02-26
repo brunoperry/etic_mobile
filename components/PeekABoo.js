@@ -3,8 +3,8 @@ import Component from "./Component.js";
 export default class PeekABoo extends Component {
   #timeoutID = null;
   #TIMEOUT = 2500;
-  constructor(elemID, callback) {
-    super(elemID, callback);
+  constructor(elemID) {
+    super(elemID);
   }
 
   show(message = "", type = "success") {

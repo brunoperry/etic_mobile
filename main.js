@@ -39,9 +39,8 @@ const initialize = async (api_url) => {
 };
 
 const setupLayout = () => {
-  peekaboo = new PeekABoo("#peek-a-boo", () => {
-    console.log("peekaboo");
-  });
+  peekaboo = new PeekABoo("#peek-a-boo");
+
   info = new Info("#info", (value) => {
     console.log("info", value);
   });
