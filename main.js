@@ -29,7 +29,7 @@ const initialize = async (api_url) => {
   try {
     const req = await fetch(api_url, {
       headers: {
-        "accept-encoding": "gzip",
+        "accept-encoding": "gzip, deflate, br",
       },
     });
     const apiData = await req.json();
