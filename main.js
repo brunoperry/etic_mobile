@@ -17,6 +17,7 @@ let menu;
 const API_URL = "https://purring-cyclic-jackrabbit.glitch.me/";
 
 window.onload = async () => {
+  console.log("loading...");
   await initialize(API_URL);
   setupLayout();
   setupAudio();
@@ -26,8 +27,13 @@ window.onload = async () => {
 
 const initialize = async (api_url) => {
   try {
-    const req = await fetch(api_url);
+    const req = await fetch(api_url, {
+      headers: {
+        "accept-encoding": "gzip",
+      },
+    });
     const apiData = await req.json();
+    console.log("ijd", apiData);
     appData = [
       ...apiData,
       {
