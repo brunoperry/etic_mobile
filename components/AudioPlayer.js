@@ -4,6 +4,7 @@ export default class AudioPlayer {
   #trackIndex = 0;
 
   currentState = "pause";
+  currentTrack;
   callback;
   constructor(callback) {
     this.#audio = new Audio();
@@ -43,8 +44,8 @@ export default class AudioPlayer {
   }
 
   async play(track = null, playlist = null) {
-    this.#playlist = playlist || this.#playlist;
     this.currentTrack = track || this.currentTrack;
+    this.#playlist = playlist || this.#playlist;
 
     if (!this.#audio.paused) this.#audio.pause();
 

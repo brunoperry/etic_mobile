@@ -14,6 +14,7 @@ let controller;
 let volumeBar;
 let menu;
 
+// const API_URL = "app_data.json";
 const API_URL = "https://purring-cyclic-jackrabbit.glitch.me/";
 
 window.onload = async () => {
