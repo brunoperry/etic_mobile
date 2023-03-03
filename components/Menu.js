@@ -56,17 +56,21 @@ export default class Menu extends Component {
   #deleteList(index = null) {
     if (index !== null) {
       const list = this.#menuContainer.children[index];
-      this.#menuContainer.removeChild(list);
-      this.#currentList =
-        this.#menuContainer.children[this.#menuContainer.children.length - 1];
+      list.style.transform = "translateX(100%)";
+      this.#currentList = this.#menuContainer.children[index - 1];
       this.#currentList.style.transform = "translateX(0)";
+
+      this.#menuContainer.children.length - 1 > 1
+        ? (this.#backButton.displayed = true)
+        : (this.#backButton.displayed = false);
+      setTimeout(() => {
+        this.#menuContainer.removeChild(list);
+      }, this.SPEED);
     } else {
       this.#menuContainer.innerHTML = "";
       this.#currentList = null;
+      this.#backButton.displayed = false;
     }
-    this.#menuContainer.children.length > 1
-      ? (this.#backButton.displayed = true)
-      : (this.#backButton.displayed = false);
   }
 
   open() {

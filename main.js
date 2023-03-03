@@ -4,28 +4,29 @@ import Info from "./components/Info.js";
 import Menu from "./components/Menu.js";
 import PeekABoo from "./components/PeekABoo.js";
 import RangeBar from "./components/RangeBar.js";
+import Splash from "./components/Splash.js";
 
 let appData;
 let audioPlayer;
 
+let splash;
 let peekaboo;
 let info;
 let controller;
+let scrub;
 let volumeBar;
 let menu;
 
 const API_URL = "https://purring-cyclic-jackrabbit.glitch.me/";
 
 window.onload = async () => {
-  console.log("loading...");
-  await initialize(API_URL);
+  await initialize(API_URL, true);
   setupLayout();
   setupAudio();
-
-  console.log("ready!");
 };
 
-const initialize = async (api_url) => {
+const initialize = async (api_url, withSplash = false) => {
+  if (withSplash) splash = new Splash();
   try {
     const req = await fetch(api_url, {
       headers: {
@@ -44,8 +45,12 @@ const initialize = async (api_url) => {
         name: "reset",
       },
     ];
+    if (withSplash) splash.delete();
   } catch (error) {
-    console.log(error);
+    if (withSplash) splash.error();
+    else {
+      peekaboo.show("Something went wrong...", "error");
+    }
   }
 };
 
@@ -73,6 +78,10 @@ const setupLayout = () => {
     }
   });
 
+  scrub = new RangeBar("#scrub", (value) => {
+    audioPlayer.scrub(value);
+  });
+
   volumeBar = new RangeBar("#volume", (value) => {
     audioPlayer.volume = value;
   });
@@ -90,7 +99,6 @@ const setupLayout = () => {
       case "open":
         document.querySelector("#file-input").click();
         break;
-
       case "reset":
         menu.close();
         await initialize(`${API_URL}/reset`);
@@ -108,6 +116,7 @@ const setupLayout = () => {
       localPlaylist.push({
         id: file.name,
         name: file.name,
+        type: "file",
         url: URL.createObjectURL(file),
       });
     });
@@ -129,7 +138,8 @@ const setupAudio = () => {
         });
         break;
       case "play":
-        menu.setTrail(audioPlayer.currentTrack.id.split("/"));
+        // if
+        console.log("skljd");
         break;
 
       default:

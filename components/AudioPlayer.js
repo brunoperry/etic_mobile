@@ -50,6 +50,7 @@ export default class AudioPlayer {
 
     try {
       this.#audio.src = this.#playlist[this.#trackIndex].url;
+
       await this.#audio.play();
       return true;
     } catch (error) {
@@ -64,6 +65,10 @@ export default class AudioPlayer {
     this.#trackIndex++;
     if (this.#trackIndex >= this.#playlist.length) this.#trackIndex = 0;
     this.play(this.#playlist[this.#trackIndex], this.#playlist);
+  }
+
+  scrub(value) {
+    this.#audio.currentTime = (this.#audio.duration * value) / 100;
   }
 
   get currentTrack() {
@@ -83,5 +88,9 @@ export default class AudioPlayer {
   }
   set volume(val) {
     this.#audio.volume = val / 100;
+  }
+
+  get duration() {
+    return this.#audio.duration;
   }
 }

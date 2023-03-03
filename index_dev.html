@@ -14,7 +14,12 @@
 
 <body>
   <div id="info">
-    <div id="info-container"></div>
+    <div id="info-container">
+      <h2>Name</h2>
+      <p class="name">Music Player PWA</p>
+      <h2>Type</h2>
+      <p class="type">JavaScript PWA audio player</p>
+    </div>
     <button id="info-button" class="toggle">
       <label>MUSIC PLAYER</label>
       <svg width="45px" height="45px" viewBox="0 0 6 6" fill="var(--primary-color)">
@@ -55,6 +60,12 @@
       </svg>
     </button>
   </div>
+
+  <div id="scrub" class="range">
+    <div class="range-bar"></div>
+    <input type="range" min="0" max="100" value="10" />
+  </div>
+
   <div id="volume" class="range">
     <div class="range-bar"></div>
     <input type="range" min="0" max="100" value="10" />
@@ -83,7 +94,16 @@
 
   <input type="file" id="file-input" multiple accept="audio/*" class="hidden">
 
-  <div id="peek-a-boo">peekaboo
+  <div id="peek-a-boo">peekaboo</div>
+
+  <div id="splash">
+    <svg width="92px" height="92px" viewBox="0 0 21 21">
+      <rect x="0" y="0" width="20.71" height="20.71" fill="var(--terciary-color)" />
+      <path
+        d="M16.663,17.003l-4.283,0l-0,-3.994l2.048,-0l-0,-5.309l-6.076,0l0.001,9.303l-4.284,0l0,-3.994l2.047,-0l-0,-9.302l10.547,0l0,13.296Z"
+        fill="var(--primary-color)" />
+    </svg>
+    <p>Loading, please wait.</p>
   </div>
 
   <template class="list-item">
