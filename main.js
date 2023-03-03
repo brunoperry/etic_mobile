@@ -145,7 +145,6 @@ const setupAudio = () => {
         }
         break;
       case "progress":
-        console.log("asd");
         scrub.value = (audioPlayer.currentTime / audioPlayer.duration) * 100;
         break;
 
