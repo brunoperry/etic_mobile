@@ -1,6 +1,7 @@
 {
   "scripts": {
-    "build": "gulp --gulpfile deploy/gulpfile.js"
+    "build": "gulp --gulpfile deploy/gulpfile.js",
+    "deploy": "npm run build && git add . && git commit -m 'updated class 14' && git push -u origin class14"
   },
   "type": "module",
   "devDependencies": {
