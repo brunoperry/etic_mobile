@@ -62,11 +62,12 @@ const minifyHead = () => {
         let out = [];
         let collect = false;
         content.split("\n").forEach((ln) => {
-          if (ln === "") collect = false;
+          if (ln.includes("<head>")) collect = true;
           if (collect) out.push(ln);
-          if (ln === "<head>") collect = true;
+          if (ln === "") collect = false;
         });
         content = out.join("\n");
+        content = content.replace(/<head>/g, "");
         callback(null, content);
       })
     )
@@ -80,17 +81,19 @@ const minifyBody = () => {
         let out = [];
         let collect = false;
         content.split("\n").forEach((ln) => {
-          if (ln === "</body>") collect = false;
+          if (ln.includes("<body>")) collect = true;
           if (collect) out.push(ln);
-          if (ln === "<body>") collect = true;
+          if (ln.includes("</body>")) collect = true;
         });
         content = out.join("\n");
+        content = content.replace(/<body>/g, "");
         callback(null, content);
       })
     )
     .pipe(concat(bodyName))
     .pipe(dest(`./`));
 };
+
 const minifyCSS = () => {
   return src("../styles.css").pipe(cleanCSS()).pipe(concat(stylesName)).pipe(dest(`./`));
 };

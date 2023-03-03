@@ -33,7 +33,6 @@ const initialize = async (api_url) => {
       },
     });
     const apiData = await req.json();
-    console.log("ijd", apiData);
     appData = [
       ...apiData,
       {

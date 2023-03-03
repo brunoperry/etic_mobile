@@ -1,6 +1,6 @@
 {
   "scripts": {
-    "compile": "gulp --gulpfile deploy/gulpfile.js"
+    "build": "gulp --gulpfile deploy/gulpfile.js"
   },
   "type": "module",
   "devDependencies": {
