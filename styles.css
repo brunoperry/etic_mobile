@@ -149,7 +149,7 @@ input[type="file"] {
 #scrub {
   flex: 1;
   max-height: 16px;
-  /* display: none; */
+  display: none;
 }
 
 /* VOLUME */

@@ -127,7 +127,7 @@ const setupLayout = () => {
 
 const setupAudio = () => {
   audioPlayer = new AudioPlayer((action, error = null) => {
-    controller.setState(action);
+    if (action !== "progress") controller.setState(action);
 
     switch (action) {
       case "error":
@@ -138,8 +138,15 @@ const setupAudio = () => {
         });
         break;
       case "play":
-        // if
-        console.log("skljd");
+        if (audioPlayer.duration === Infinity) {
+          scrub.element.style.display = "none";
+        } else {
+          scrub.element.style.display = "flex";
+        }
+        break;
+      case "progress":
+        console.log("asd");
+        scrub.value = (audioPlayer.currentTime / audioPlayer.duration) * 100;
         break;
 
       default:

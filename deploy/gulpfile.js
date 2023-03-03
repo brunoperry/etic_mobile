@@ -50,6 +50,7 @@ const modules = [
   "../components/Info.js",
   "../components/Controller.js",
   "../components/RangeBar.js",
+  "../components/Splash.js",
   "../components/Menu.js",
   "../main.js",
 ];

@@ -34,6 +34,10 @@ export default class AudioPlayer {
       this.currentState = "play";
       this.callback(this.currentState);
     };
+    this.#audio.ontimeupdate = () => {
+      this.currentState = "progress";
+      this.callback(this.currentState);
+    };
   }
 
   previous() {
@@ -92,5 +96,8 @@ export default class AudioPlayer {
 
   get duration() {
     return this.#audio.duration;
+  }
+  get currentTime() {
+    return this.#audio.currentTime;
   }
 }
