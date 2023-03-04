@@ -157,9 +157,6 @@ const setupAudio = () => {
       default:
         break;
     }
-    // if (action !== "error" || action !== "progress") {
-    //   info.update(audioPlayer.currentTrack);
-    // }
   });
   audioPlayer.volume = volumeBar.value;
 };
