@@ -48,7 +48,7 @@ export default class Menu extends Component {
 
     setTimeout(() => {
       this.#currentList.style.transform = "translateX(0)";
-    }, 5);
+    }, 10);
     this.#backButton.displayed = this.#menuContainer.children.length > 1;
   }
 

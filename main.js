@@ -61,9 +61,7 @@ const initialize = async (api_url, withSplash = false) => {
 const setupLayout = () => {
   peekaboo = new PeekABoo("#peek-a-boo");
 
-  info = new Info("#info", (value) => {
-    peekaboo.show("Link copied!");
-  });
+  info = new Info("#info", (value) => {});
 
   controller = new Controller("#controller", (action) => {
     switch (action) {

@@ -136,21 +136,6 @@ input[type="file"] {
   display: none;
 }
 
-#info-container>button {
-  align-items: center;
-  justify-content: space-between;
-  max-height: var(--button-height);
-  background-color: var(--primary-color);
-}
-
-#info-container> :last-child {
-  flex-grow: 1;
-  margin-top: auto;
-}
-
-#info-container>button label {
-  color: var(--secondary-color);
-}
 
 /* CONTROLLER */
 #controller {

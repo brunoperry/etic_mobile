@@ -1,4 +1,3 @@
-import Button from "./Button.js";
 import Component from "./Component.js";
 import ToggleButton from "./ToggleButton.js";
 
@@ -16,10 +15,6 @@ export default class Info extends Component {
 
     this.#nameLabel = this.#infoContainer.querySelector(".name");
     this.#typeLabel = this.#infoContainer.querySelector(".type");
-
-    new Button("#share-button", () => {
-      this.callback("share");
-    });
 
     this.#infoButton = new ToggleButton("#info-button", (value) => {
       this.#isOpened ? this.close() : this.open();
