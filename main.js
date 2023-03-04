@@ -17,7 +17,7 @@ let scrub;
 let volumeBar;
 let menu;
 
-const API_URL = "https://purring-cyclic-jackrabbit.glitch.me/";
+const API_URL = "https://shrouded-fire-liver.glitch.me/";
 
 window.onload = async () => {
   await initialize(API_URL, true);
