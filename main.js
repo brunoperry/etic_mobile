@@ -148,6 +148,7 @@ const setupAudio = () => {
         } else {
           scrub.element.style.display = "flex";
         }
+        info.update(audioPlayer.currentTrack);
         break;
       case "progress":
         scrub.value = (audioPlayer.currentTime / audioPlayer.duration) * 100;
@@ -156,9 +157,9 @@ const setupAudio = () => {
       default:
         break;
     }
-    if (action !== "error") {
-      info.update(audioPlayer.currentTrack);
-    }
+    // if (action !== "error" || action !== "progress") {
+    //   info.update(audioPlayer.currentTrack);
+    // }
   });
   audioPlayer.volume = volumeBar.value;
 };
