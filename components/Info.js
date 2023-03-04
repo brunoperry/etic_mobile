@@ -1,3 +1,4 @@
+import Button from "./Button.js";
 import Component from "./Component.js";
 import ToggleButton from "./ToggleButton.js";
 
@@ -16,9 +17,12 @@ export default class Info extends Component {
     this.#nameLabel = this.#infoContainer.querySelector(".name");
     this.#typeLabel = this.#infoContainer.querySelector(".type");
 
+    new Button("#share-button", () => {
+      this.callback("share");
+    });
+
     this.#infoButton = new ToggleButton("#info-button", (value) => {
       this.#isOpened ? this.close() : this.open();
-      this.callback(this.#isOpened);
     });
   }
 
@@ -39,7 +43,7 @@ export default class Info extends Component {
     setTimeout(() => {
       for (let i = 0; i < this.#infoContainer.children.length; i++) {
         const element = this.#infoContainer.children[i];
-        element.style.display = "initial";
+        element.style.display = "flex";
       }
     }, this.SPEED);
   }

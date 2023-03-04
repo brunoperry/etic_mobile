@@ -46,11 +46,10 @@ export default class Menu extends Component {
     this.#menuContainer.appendChild(ul);
     this.#currentList = ul;
 
-    requestAnimationFrame(() => (this.#currentList.style.transform = "translateX(0)"));
-
-    this.#menuContainer.children.length > 1
-      ? (this.#backButton.displayed = true)
-      : (this.#backButton.displayed = false);
+    setTimeout(() => {
+      this.#currentList.style.transform = "translateX(0)";
+    }, 5);
+    this.#backButton.displayed = this.#menuContainer.children.length > 1;
   }
 
   #deleteList(index = null) {

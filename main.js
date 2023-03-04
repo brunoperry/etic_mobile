@@ -44,6 +44,10 @@ const initialize = async (api_url, withSplash = false) => {
         type: "reset",
         name: "reset",
       },
+      {
+        type: "exit",
+        name: "exit",
+      },
     ];
     if (withSplash) splash.delete();
   } catch (error) {
@@ -58,7 +62,7 @@ const setupLayout = () => {
   peekaboo = new PeekABoo("#peek-a-boo");
 
   info = new Info("#info", (value) => {
-    console.log("info", value);
+    peekaboo.show("Link copied!");
   });
 
   controller = new Controller("#controller", (action) => {
@@ -104,6 +108,9 @@ const setupLayout = () => {
         await initialize(`${API_URL}/reset`);
         menu.data = appData;
         peekaboo.show("Data updated!");
+        break;
+      case "exit":
+        window.close();
         break;
     }
   });

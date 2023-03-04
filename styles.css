@@ -89,7 +89,7 @@ button {
 }
 
 li:active>*,
-button:active {
+button:active>* {
   scale: 0.9;
 }
 
@@ -132,8 +132,24 @@ input[type="file"] {
   z-index: 100;
 }
 
-#info-container * {
+#info-container>* {
   display: none;
+}
+
+#info-container>button {
+  align-items: center;
+  justify-content: space-between;
+  max-height: var(--button-height);
+  background-color: var(--primary-color);
+}
+
+#info-container> :last-child {
+  flex-grow: 1;
+  margin-top: auto;
+}
+
+#info-container>button label {
+  color: var(--secondary-color);
 }
 
 /* CONTROLLER */
@@ -244,6 +260,7 @@ li .toggle {
   transform: translateY(-100%);
   animation-duration: var(--speed);
   animation-fill-mode: forwards;
+  pointer-events: none;
 }
 
 /* SPLASH */
