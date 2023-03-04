@@ -20,9 +20,22 @@ let menu;
 const API_URL = "https://shrouded-fire-liver.glitch.me/";
 
 window.onload = async () => {
+  setupPWA();
   await initialize(API_URL, true);
   setupLayout();
   setupAudio();
+};
+
+const setupPWA = () => {
+  if ("serviceWorker" in navigator) {
+    navigator.serviceWorker.register("sw.js");
+  }
+  window.ononline = () => {
+    peekaboo.show("You are online");
+  };
+  window.onoffline = () => {
+    peekaboo.show("You are offline", "warning");
+  };
 };
 
 const initialize = async (api_url, withSplash = false) => {
