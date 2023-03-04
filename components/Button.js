@@ -1,15 +1,29 @@
 import Component from "./Component.js";
 
 export default class Button extends Component {
+  #wait_click = false;
   constructor(elemID, callback) {
     super(elemID, callback);
 
-    if (this.element) this.element.onclick = () => this.callback();
+    if (this.element) {
+      this.#setupEvents();
+    }
+  }
+
+  #setupEvents() {
+    this.element.onclick = () => {
+      if (this.#wait_click) return;
+      this.callback();
+      this.#wait_click = true;
+      setTimeout(() => {
+        this.#wait_click = false;
+      }, this.SPEED);
+    };
   }
 
   setElement(element) {
     super.setElement(element);
-    this.element.onclick = () => this.callback();
+    this.#setupEvents();
   }
 
   get text() {
