@@ -17,7 +17,6 @@ const urlsToCache = [
 
 // Install event listener
 self.addEventListener("install", async (event) => {
-  console.log("sw", "installing");
   const cache = await caches.open(CACHE_NAME);
   await cache.addAll(urlsToCache);
   await self.skipWaiting();
@@ -28,7 +27,6 @@ self.addEventListener("install", async (event) => {
 
 // Activate event listener
 self.addEventListener("activate", async (event) => {
-  console.log("sw", "activating");
   const cacheNames = await caches.keys();
   await Promise.all(
     cacheNames.filter((name) => name !== CACHE_NAME).map((name) => caches.delete(name))

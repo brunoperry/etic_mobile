@@ -32,6 +32,7 @@ const setupPWA = () => {
   if ("serviceWorker" in navigator && isOnline) {
     navigator.serviceWorker.register("sw.js");
   }
+
   window.ononline = async () => {
     isOnline = true;
     peekaboo.show("You are online");
@@ -47,6 +48,7 @@ const setupPWA = () => {
 };
 
 const initialize = async (api_url = API_URL, withSplash = false) => {
+  console.log(isOnline);
   if (!isOnline) {
     Splash.OFFLINE();
     appData = [
@@ -86,11 +88,7 @@ const initialize = async (api_url = API_URL, withSplash = false) => {
     ];
     if (withSplash) splash.delete();
   } catch (error) {
-    if (withSplash) splash.error();
-    else {
-      console.log(error);
-      peekaboo.show("Something went wrong...", "error");
-    }
+    withSplash ? splash.error() : peekaboo.show("Something went wrong...", "error");
   }
 };
 
@@ -179,11 +177,7 @@ const setupAudio = () => {
         });
         break;
       case "play":
-        if (audioPlayer.duration === Infinity) {
-          scrub.element.style.display = "none";
-        } else {
-          scrub.element.style.display = "flex";
-        }
+        scrub.element.style.display = audioPlayer.duration === Infinity ? "none" : "flex";
         info.update(audioPlayer.currentTrack);
         break;
       case "progress":

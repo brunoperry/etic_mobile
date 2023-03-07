@@ -100,7 +100,11 @@ export default class Menu extends Component {
   }
 
   set data(val) {
-    this.#menuData = val;
-    //if opened, paint trail.
+    if (this.#isOpen) {
+      this.close();
+      setTimeout(() => (this.#menuData = val));
+    } else {
+      this.#menuData = val;
+    }
   }
 }
