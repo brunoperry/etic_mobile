@@ -19,6 +19,8 @@ let menu;
 
 const API_URL = "https://shrouded-fire-liver.glitch.me/";
 
+let isOnline = navigator.onLine;
+
 window.onload = async () => {
   setupPWA();
   await initialize(API_URL, true);
@@ -27,18 +29,38 @@ window.onload = async () => {
 };
 
 const setupPWA = () => {
-  if ("serviceWorker" in navigator) {
+  if ("serviceWorker" in navigator && isOnline) {
     navigator.serviceWorker.register("sw.js");
   }
-  window.ononline = () => {
+  window.ononline = async () => {
+    isOnline = true;
     peekaboo.show("You are online");
+    await initialize();
+    menu.data = appData;
   };
-  window.onoffline = () => {
+  window.onoffline = async () => {
+    isOnline = false;
     peekaboo.show("You are offline", "warning");
+    await initialize();
+    menu.data = appData;
   };
 };
 
-const initialize = async (api_url, withSplash = false) => {
+const initialize = async (api_url = API_URL, withSplash = false) => {
+  if (!isOnline) {
+    Splash.OFFLINE();
+    appData = [
+      {
+        type: "open",
+        name: "open...",
+      },
+      {
+        type: "exit",
+        name: "exit",
+      },
+    ];
+    return;
+  }
   if (withSplash) splash = new Splash();
   try {
     const req = await fetch(api_url, {
@@ -66,6 +88,7 @@ const initialize = async (api_url, withSplash = false) => {
   } catch (error) {
     if (withSplash) splash.error();
     else {
+      console.log(error);
       peekaboo.show("Something went wrong...", "error");
     }
   }

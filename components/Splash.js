@@ -27,6 +27,10 @@ export default class Splash {
     this.#icon.style.fill = "var(--error-color)";
     this.#label.innerText = "Error connecting to server.";
     this.#label.style.color = "var(--error-color)";
+
+    setTimeout(() => {
+      document.body.removeChild(this.#element);
+    }, 3000);
   }
 
   delete() {
@@ -38,5 +42,14 @@ export default class Splash {
     setTimeout(() => {
       document.body.removeChild(this.#element);
     }, 1000);
+  }
+
+  static OFFLINE() {
+    const elem = document.querySelector("#splash");
+    if (!elem) return;
+    elem.querySelector("p").innerText = "Offline...";
+    setTimeout(() => {
+      document.body.removeChild(elem);
+    }, 3000);
   }
 }
