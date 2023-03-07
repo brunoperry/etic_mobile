@@ -4,15 +4,15 @@ const CACHE_NAME = "musicplayer-cache";
 // Define an array of files to cache
 const urlsToCache = [
   "/",
-  "/index.html",
-  "/app_logo.svg",
-  "/webmanifest.json",
-  "/images/icons-192.png",
-  "/images/icons-512.png",
-  "/images/icons-vector.svg",
-  "/images/maskable_icon.png",
-  "/images/screenshot1.png",
-  "/images/screenshot2.png",
+  "index.html",
+  "app_logo.svg",
+  "webmanifest.json",
+  "images/icons-192.png",
+  "images/icons-512.png",
+  "images/icons-vector.svg",
+  "images/maskable_icon.png",
+  "images/screenshot1.png",
+  "images/screenshot2.png",
 ];
 
 // Install event listener
