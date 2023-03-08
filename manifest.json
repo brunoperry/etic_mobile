@@ -27,6 +27,7 @@
   "start_url": "/",
   "id": "/",
   "background_color": "#031E3C",
+  "orientation": "portrait",
   "display": "fullscreen",
   "scope": "/",
   "theme_color": "#053160",

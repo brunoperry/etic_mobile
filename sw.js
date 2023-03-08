@@ -13,6 +13,7 @@ const cachedAssets = [
 ];
 
 self.addEventListener("install", (event) => {
+  console.log("sw install");
   event.waitUntil(
     caches.open(CACHE_NAME).then((cache) => {
       cache.addAll(cachedAssets);
