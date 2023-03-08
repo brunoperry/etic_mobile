@@ -22,30 +22,16 @@ const API_URL = "https://shrouded-fire-liver.glitch.me/";
 let isOnline = navigator.onLine;
 
 window.onload = async () => {
-  if ("serviceWorker" in navigator) {
-    navigator.serviceWorker.register("service-worker.js");
-  }
-  // setupPWA();
+  setupPWA();
   await initialize(API_URL, true);
   setupLayout();
   setupAudio();
 };
 
 const setupPWA = () => {
-  let deferredPrompt;
-  window.addEventListener("beforeinstallprompt", (e) => {
-    console.log("prompted");
-    // Prevents the default mini-infobar or install dialog from appearing on mobile
-    e.preventDefault();
-    // Save the event because you'll need to trigger it later.
-    deferredPrompt = e;
-    // Show your customized install prompt for your PWA
-    // Your own UI doesn't have to be a single element, you
-    // can have buttons in different locations, or wait to prompt
-    // as part of a critical journey.
-    // showInAppInstallPromotion();
-  });
-
+  if ("serviceWorker" in navigator) {
+    navigator.serviceWorker.register("service-worker.js");
+  }
   window.ononline = async () => {
     isOnline = true;
     peekaboo.show("You are online");
