@@ -22,17 +22,16 @@ const API_URL = "https://shrouded-fire-liver.glitch.me/";
 let isOnline = navigator.onLine;
 
 window.onload = async () => {
-  setupPWA();
+  if ("serviceWorker" in navigator) {
+    navigator.serviceWorker.register("service-worker.js");
+  }
+  // setupPWA();
   await initialize(API_URL, true);
   setupLayout();
   setupAudio();
 };
 
 const setupPWA = () => {
-  if ("serviceWorker" in navigator) {
-    navigator.serviceWorker.register("service-worker.js");
-  }
-
   let deferredPrompt;
   window.addEventListener("beforeinstallprompt", (e) => {
     console.log("prompted");
