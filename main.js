@@ -30,7 +30,7 @@ window.onload = async () => {
 
 const setupPWA = () => {
   if ("serviceWorker" in navigator && isOnline) {
-    navigator.serviceWorker.register("sw.js");
+    navigator.serviceWorker.register("service-worker.js");
   }
 
   let deferredPrompt;
