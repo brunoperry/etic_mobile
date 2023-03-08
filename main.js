@@ -29,7 +29,7 @@ window.onload = async () => {
 };
 
 const setupPWA = () => {
-  if ("serviceWorker" in navigator && isOnline) {
+  if ("serviceWorker" in navigator) {
     navigator.serviceWorker.register("service-worker.js");
   }
 
