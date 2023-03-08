@@ -1,15 +1,15 @@
 const VERSION = 1;
 const CACHE_NAME = "musicplayer";
 const cachedAssets = [
-  "/index.html",
-  "/app_logo.svg",
-  "/manifest.json",
-  "/images/icons-192.png",
-  "/images/icons-512.png",
-  "/images/icons-vector.svg",
-  "/images/maskable_icon.png",
-  "/images/screenshot1.png",
-  "/images/screenshot2.png",
+  "index.html",
+  "app_logo.svg",
+  "manifest.json",
+  "images/icons-192.png",
+  "images/icons-512.png",
+  "images/icons-vector.svg",
+  "images/maskable_icon.png",
+  "images/screenshot1.png",
+  "images/screenshot2.png",
 ];
 
 self.addEventListener("install", (event) => {
