@@ -14,20 +14,20 @@ const cachedAssets = [
 
 self.addEventListener("install", (installEvent) => {
   console.log("install sw");
-  const response = async () => {
+  const response = (async () => {
     const cache = await caches.open(CACHE_NAME);
     cache.addAll(cachedAssets);
-  };
+  })();
   installEvent.waitUntil(response);
 });
 
 self.addEventListener("activate", (event) => {
   console.log("activate sw");
-  const response = async () => {
+  const response = (async () => {
     if ("navigationPreload" in self.registration) {
       await self.registration.navigationPreload.enable();
     }
-  };
+  })();
   event.waitUntil(response);
   self.clients.claim();
 });
