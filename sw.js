@@ -12,34 +12,40 @@ const cachedAssets = [
   "/images/screenshot2.png",
 ];
 
-self.addEventListener("install", (installEvent) => {
-  console.log("install sw");
-  const response = (async () => {
-    const cache = await caches.open(CACHE_NAME);
-    cache.addAll(cachedAssets);
-  })();
-  installEvent.waitUntil(response);
+self.addEventListener("install", (event) => {
+  event.waitUntil(
+    caches.open(CACHE_NAME).then((cache) => {
+      cache.addAll(cachedAssets);
+    })
+  );
 });
 
 self.addEventListener("activate", (event) => {
   console.log("activate sw");
-  const response = (async () => {
-    if ("navigationPreload" in self.registration) {
-      await self.registration.navigationPreload.enable();
-    }
-  })();
-  event.waitUntil(response);
+  event.waitUntil(
+    (async () => {
+      if ("navigationPreload" in self.registration) {
+        await self.registration.navigationPreload.enable();
+      }
+    })()
+  );
   self.clients.claim();
 });
 self.addEventListener("fetch", (event) => {
   console.log("fetch sw");
-  const response = (async () => {
-    try {
-      const cachedResponse = await caches.match(event.request);
-      return cachedResponse || fetch(event.request);
-    } catch (error) {
-      console.log("error fetching", error);
-    }
-  })();
-  event.respondWith(response);
+  event.respondWith(
+    (async () => {
+      try {
+        const preloadResponse = await event.preloadResponse;
+        if (preloadResponse) {
+          return preloadResponse;
+        }
+
+        const networkResponse = await fetch(event.request);
+        return networkResponse;
+      } catch (error) {
+        console.error("Fetch failed", error);
+      }
+    })()
+  );
 });
