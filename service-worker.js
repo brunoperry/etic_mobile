@@ -19,8 +19,6 @@ const cachedAssets = [
 ];
 
 self.addEventListener("install", async (event) => {
-  console.log("install sw");
-
   const cache = await caches.open(CACHE_NAME);
   await cache.addAll(cachedAssets);
   await self.skipWaiting();
@@ -30,7 +28,6 @@ self.addEventListener("install", async (event) => {
 });
 
 self.addEventListener("activate", async (event) => {
-  console.log("activate sw");
   //Clean old cached versions still in memory.
   const oldCache = await caches.open(CACHE_NAME);
   if (oldCache) await oldCache.delete(CACHE_NAME);
@@ -49,10 +46,7 @@ self.addEventListener("activate", async (event) => {
   }
 });
 self.addEventListener("fetch", async (event) => {
-  console.log("fetch sw", event.request.url);
   const responsePromise = (async () => {
-    const k = await caches.keys();
-    console.log(k);
     const cachedResponse = await caches.match(event.request);
     return cachedResponse || fetch(event.request);
   })();
