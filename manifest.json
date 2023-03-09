@@ -27,7 +27,6 @@
   "start_url": "/etic_mobile/",
   "id": "/etic_mobile/",
   "background_color": "#031E3C",
-  "orientation": "portrait",
   "display": "fullscreen",
   "scope": "/etic_mobile/",
   "theme_color": "#053160",
