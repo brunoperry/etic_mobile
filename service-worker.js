@@ -32,8 +32,8 @@ self.addEventListener("install", async (event) => {
 self.addEventListener("activate", async (event) => {
   console.log("activate sw");
   //Clean old cached versions still in memory.
-  const oldCache = await caches.open(CACHE_NAME);
-  if (oldCache) await oldCache.delete(CACHE_NAME);
+  // const oldCache = await caches.open(CACHE_NAME);
+  // if (oldCache) await oldCache.delete(CACHE_NAME);
 
   // Check the version number stored in the cache
   const cache = await caches.open(CACHE_NAME);
