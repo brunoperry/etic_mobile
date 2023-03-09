@@ -26,6 +26,7 @@ self.addEventListener("install", async (event) => {
 
   // Store the current version number in the cache
   await cache.put("version", new Response(VERSION));
+  console.log(cache);
 });
 
 self.addEventListener("activate", async (event) => {
