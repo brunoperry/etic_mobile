@@ -26,7 +26,6 @@ self.addEventListener("install", async (event) => {
 
   // Store the current version number in the cache
   await cache.put("version", new Response(VERSION));
-  console.log(cache);
 });
 
 self.addEventListener("activate", async (event) => {
@@ -49,8 +48,8 @@ self.addEventListener("activate", async (event) => {
   }
 });
 self.addEventListener("fetch", (event) => {
-  console.log("fetch sw");
-  const responsePromise = (async function () {
+  const responsePromise = (async () => {
+    console.log("fetch sw", event.request.url);
     const cachedResponse = await caches.match(event.request);
     return cachedResponse || fetch(event.request);
   })();
