@@ -6,16 +6,16 @@ const CACHE_NAME = "musicplayer";
 
 //Assets to be cached
 const cachedAssets = [
-  "/",
-  "index.html",
-  "app_logo.svg",
-  "manifest.json",
-  "images/icons-192.png",
-  "images/icons-512.png",
-  "images/icons-vector.svg",
-  "images/maskable_icon.png",
-  "images/screenshot1.png",
-  "images/screenshot2.png",
+  "/etic_mobile/",
+  "/etic_mobile/index.html",
+  "/etic_mobile/app_logo.svg",
+  "/etic_mobile/manifest.json",
+  "/etic_mobile/images/icons-192.png",
+  "/etic_mobile/images/icons-512.png",
+  "/etic_mobile/images/icons-vector.svg",
+  "/etic_mobile/images/maskable_icon.png",
+  "/etic_mobile/images/screenshot1.png",
+  "/etic_mobile/images/screenshot2.png",
 ];
 
 self.addEventListener("install", async (event) => {
