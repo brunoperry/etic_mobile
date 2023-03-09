@@ -6,15 +6,16 @@ const CACHE_NAME = "musicplayer";
 
 //Assets to be cached
 const cachedAssets = [
-  "index.html",
-  "app_logo.svg",
-  "manifest.json",
-  "images/icons-192.png",
-  "images/icons-512.png",
-  "images/icons-vector.svg",
-  "images/maskable_icon.png",
-  "images/screenshot1.png",
-  "images/screenshot2.png",
+  "/",
+  "/index.html",
+  "/app_logo.svg",
+  "/manifest.json",
+  "/images/icons-192.png",
+  "/images/icons-512.png",
+  "/images/icons-vector.svg",
+  "/images/maskable_icon.png",
+  "/images/screenshot1.png",
+  "/images/screenshot2.png",
 ];
 
 self.addEventListener("install", async (event) => {
@@ -49,7 +50,7 @@ self.addEventListener("activate", async (event) => {
 });
 self.addEventListener("fetch", (event) => {
   const responsePromise = (async () => {
-    console.log("fetch sw", event.request.url);
+    console.log(caches, event.request.url);
     const cachedResponse = await caches.match(event.request);
     return cachedResponse || fetch(event.request);
   })();
