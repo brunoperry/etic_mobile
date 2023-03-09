@@ -1,0 +1,42 @@
+{
+  "packageId": "io.github.brunoperry.twa",
+  "host": "brunoperry.github.io",
+  "name": "Music Player PWA",
+  "launcherName": "Music Player",
+  "display": "fullscreen-sticky",
+  "themeColor": "#053160",
+  "navigationColor": "#000000",
+  "navigationColorDark": "#000000",
+  "navigationDividerColor": "#000000",
+  "navigationDividerColorDark": "#000000",
+  "backgroundColor": "#031E3C",
+  "enableNotifications": true,
+  "startUrl": "/etic_mobile/",
+  "iconUrl": "https://brunoperry.github.io/etic_mobile/images/icons-512.png",
+  "maskableIconUrl": "https://brunoperry.github.io/etic_mobile/images/maskable_icon.png",
+  "splashScreenFadeOutDuration": 300,
+  "signingKey": {
+    "path": "/Users/brunoperry/Documents/workspace_web/etic/android/android.keystore",
+    "alias": "android_music_player"
+  },
+  "appVersionName": "1",
+  "appVersionCode": 1,
+  "shortcuts": [],
+  "generatorApp": "bubblewrap-cli",
+  "webManifestUrl": "https://brunoperry.github.io/etic_mobile/manifest.json",
+  "fallbackType": "customtabs",
+  "features": {},
+  "alphaDependencies": {
+    "enabled": false
+  },
+  "enableSiteSettingsShortcut": true,
+  "isChromeOSOnly": false,
+  "isMetaQuest": false,
+  "fullScopeUrl": "https://brunoperry.github.io/etic_mobile/",
+  "minSdkVersion": 19,
+  "orientation": "default",
+  "fingerprints": [],
+  "additionalTrustedOrigins": [],
+  "retainedBundles": [],
+  "appVersion": "1"
+}

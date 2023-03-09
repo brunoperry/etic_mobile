@@ -1,0 +1,4 @@
+#Thu Mar 09 12:13:21 WET 2023
+base.0=/Users/brunoperry/Documents/workspace_web/etic/android/app/build/intermediates/dex/release/minifyReleaseWithR8/classes.dex
+renamed.0=classes.dex
+path.0=classes.dex

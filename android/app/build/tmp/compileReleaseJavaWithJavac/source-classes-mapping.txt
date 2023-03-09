@@ -1,0 +1,8 @@
+io/github/brunoperry/twa/Application.java
+ io.github.brunoperry.twa.Application
+io/github/brunoperry/twa/DelegationService.java
+ io.github.brunoperry.twa.DelegationService
+io/github/brunoperry/twa/LauncherActivity.java
+ io.github.brunoperry.twa.LauncherActivity
+io/github/brunoperry/twa/BuildConfig.java
+ io.github.brunoperry.twa.BuildConfig
