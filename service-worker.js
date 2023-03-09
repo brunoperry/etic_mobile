@@ -1,5 +1,10 @@
-const VERSION = 1;
+//Current version
+const VERSION = "1.0.0";
+
+//Name for our app cache
 const CACHE_NAME = "musicplayer";
+
+//Assets to be cached
 const cachedAssets = [
   "index.html",
   "app_logo.svg",
@@ -12,41 +17,42 @@ const cachedAssets = [
   "images/screenshot2.png",
 ];
 
-self.addEventListener("install", (event) => {
-  console.log("sw install");
-  event.waitUntil(
-    caches.open(CACHE_NAME).then((cache) => {
-      cache.addAll(cachedAssets);
-    })
-  );
+self.addEventListener("install", async (event) => {
+  console.log("install sw");
+
+  const cache = await caches.open(CACHE_NAME);
+  await cache.addAll(cachedAssets);
+  await self.skipWaiting();
+
+  // Store the current version number in the cache
+  await cache.put("version", new Response(VERSION));
 });
 
-self.addEventListener("activate", (event) => {
+self.addEventListener("activate", async (event) => {
   console.log("activate sw");
-  event.waitUntil(
-    (async () => {
-      if ("navigationPreload" in self.registration) {
-        await self.registration.navigationPreload.enable();
-      }
-    })()
-  );
-  self.clients.claim();
+  //Clean old cached versions still in memory.
+  const oldCache = await caches.open(CACHE_NAME);
+  if (oldCache) await oldCache.delete(CACHE_NAME);
+
+  // Check the version number stored in the cache
+  const cache = await caches.open(CACHE_NAME);
+  const cachedVersion = await cache.match("version");
+  const currentVersion = new Response(VERSION);
+
+  if (cachedVersion !== currentVersion) {
+    // If the version numbers don't match it means there is an update, reload the page
+    await clients.claim();
+    await self.clients.matchAll({ type: "window" }).then((clients) => {
+      clients.forEach((client) => client.navigate(client.url));
+    });
+  }
 });
 self.addEventListener("fetch", (event) => {
   console.log("fetch sw");
-  event.respondWith(
-    (async () => {
-      try {
-        const preloadResponse = await event.preloadResponse;
-        if (preloadResponse) {
-          return preloadResponse;
-        }
+  const responsePromise = (async function () {
+    const cachedResponse = await caches.match(event.request);
+    return cachedResponse || fetch(event.request);
+  })();
 
-        const networkResponse = await fetch(event.request);
-        return networkResponse;
-      } catch (error) {
-        console.error("Fetch failed", error);
-      }
-    })()
-  );
+  event.respondWith(responsePromise);
 });

@@ -29,7 +29,7 @@ window.onload = async () => {
 };
 
 const setupPWA = () => {
-  if ("serviceWorker" in navigator) {
+  if ("serviceWorker" in navigator && isOnline) {
     navigator.serviceWorker.register("service-worker.js");
   }
   window.ononline = async () => {
@@ -47,7 +47,6 @@ const setupPWA = () => {
 };
 
 const initialize = async (api_url = API_URL, withSplash = false) => {
-  console.log(isOnline);
   if (!isOnline) {
     Splash.OFFLINE();
     appData = [
