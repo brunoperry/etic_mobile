@@ -48,9 +48,11 @@ self.addEventListener("activate", async (event) => {
     });
   }
 });
-self.addEventListener("fetch", (event) => {
+self.addEventListener("fetch", async (event) => {
+  console.log("fetch sw", event.request.url);
   const responsePromise = (async () => {
-    console.log(caches, event.request.url);
+    const k = await caches.keys();
+    console.log(k);
     const cachedResponse = await caches.match(event.request);
     return cachedResponse || fetch(event.request);
   })();
