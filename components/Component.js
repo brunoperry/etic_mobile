@@ -7,16 +7,18 @@ export default class Component {
     this.element = document.querySelector(elementID);
     this.callback = callback;
 
-    this.SPEED =
-      parseFloat(
-        getComputedStyle(document.documentElement)
-          .getPropertyValue("--speed")
-          .replace(/(ms|s)/g, "")
-      ) * 1000;
+    this.SPEED = parseFloat(
+      getComputedStyle(document.documentElement)
+        .getPropertyValue("--speed")
+        .replace(/(ms|s)/g, "")
+    );
   }
 
   setElement(element) {
     this.element = element;
+  }
+  scale(val) {
+    this.element.style.transform = `scale3d(${val},${val},1)`;
   }
 
   get displayed() {

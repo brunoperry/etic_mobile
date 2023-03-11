@@ -52,4 +52,8 @@ export default class Info extends Component {
     this.#infoButton.toggle(0);
     this.#isOpened = false;
   }
+
+  scale(val) {
+    this.#infoButton.scale(val);
+  }
 }

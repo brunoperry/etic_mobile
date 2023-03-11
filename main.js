@@ -121,9 +121,17 @@ const setupLayout = () => {
   });
 
   menu = new Menu("#menu", async (value) => {
+    info.scale(1);
+    controller.scale(1);
+    volumeBar.scale(1);
+    scrub.scale(1);
     switch (value.type) {
       case "opening":
         info.close();
+        info.scale(0.9);
+        controller.scale(0.9);
+        volumeBar.scale(0.9);
+        scrub.scale(0.9);
         break;
       case "music":
       case "file":

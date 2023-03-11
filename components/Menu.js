@@ -48,7 +48,7 @@ export default class Menu extends Component {
 
     setTimeout(() => {
       this.#currentList.style.transform = "translateX(0)";
-    }, 10);
+    }, 100);
     this.#backButton.displayed = this.#menuContainer.children.length > 1;
   }
 
@@ -77,9 +77,7 @@ export default class Menu extends Component {
     this.#menuContainer.style.transform = "scaleY(1)";
     this.callback({ type: "opening" });
 
-    setTimeout(() => {
-      this.#createList(this.#menuData);
-    }, this.SPEED);
+    this.#createList(this.#menuData);
     this.#isOpen = true;
   }
 
@@ -88,6 +86,7 @@ export default class Menu extends Component {
     this.#deleteList();
     this.#menuContainer.style.transform = "scaleY(0)";
     this.#isOpen = false;
+    this.callback({ type: "closing" });
   }
 
   setTrail(trail) {

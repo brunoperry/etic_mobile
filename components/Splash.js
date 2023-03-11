@@ -1,14 +1,19 @@
 export default class Splash {
   #element;
   #label;
-  #icon;
   #MESSAGES = ["Loading, please wait...", "Still loading, hang on!", "Loading, zzzz..."];
   #intervalID = null;
+  #SPEED;
 
   constructor() {
     this.#element = document.querySelector("#splash");
     this.#label = this.#element.querySelector("p");
-    this.#icon = this.#element.querySelector("path");
+
+    this.#SPEED = parseFloat(
+      getComputedStyle(document.documentElement)
+        .getPropertyValue("--speed")
+        .replace(/(ms|s)/g, "")
+    );
 
     let counter = 0;
     this.#label.innerText = this.#MESSAGES[counter];
@@ -23,8 +28,6 @@ export default class Splash {
     clearInterval(this.#intervalID);
     this.#intervalID = null;
 
-    this.#icon.style.animationName = "none";
-    this.#icon.style.fill = "var(--error-color)";
     this.#label.innerText = "Error connecting to server.";
     this.#label.style.color = "var(--error-color)";
 
@@ -37,11 +40,16 @@ export default class Splash {
     clearInterval(this.#intervalID);
     this.#intervalID = null;
 
-    this.#icon.style.animationName = "none";
     this.#label.innerText = "App loaded!";
+    const img = this.#element.querySelector("img");
+    img.style.transform = "scale(1)";
     setTimeout(() => {
-      document.body.removeChild(this.#element);
-    }, 1000);
+      img.style.transform = this.#label.style.transform = "translateY(50px)";
+      img.style.opacity = this.#label.style.opacity = 0;
+      setTimeout(() => {
+        document.body.removeChild(this.#element);
+      }, this.#SPEED);
+    }, 1500);
   }
 
   static OFFLINE() {
