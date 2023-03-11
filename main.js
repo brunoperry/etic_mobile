@@ -27,10 +27,8 @@ window.onload = async () => {
   await initialize(API_URL, true);
   setupLayout();
   setupAudio();
-
   if (peekabooMessage) {
-    peekaboo.show(peekabooMessage);
-    addUpdateButton();
+    addUpdateButton(peekabooMessage);
   }
 };
 
@@ -41,7 +39,7 @@ const setupPWA = () => {
       switch (event.data.type) {
         case "update":
           if (peekaboo) {
-            addUpdateButton();
+            addUpdateButton(event.data.message);
           } else {
             peekabooMessage = event.data.message;
           }
@@ -254,8 +252,8 @@ const fetchPlaylist = (node, itemID) => {
   return item;
 };
 
-const addUpdateButton = () => {
-  peekaboo.show(event.data.message);
+const addUpdateButton = (message) => {
+  peekaboo.show(message);
   appData.push({
     type: "update",
     name: "update",
