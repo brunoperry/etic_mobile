@@ -45,9 +45,9 @@ export default class Splash {
     const img = this.#element.querySelector("img");
     img.style.transform = "scale(1)";
     setTimeout(() => {
-      this.#label.style.animationName = "";
-      img.style.transform = this.#label.style.transform = "translateY(50px)";
-      img.style.opacity = this.#label.style.opacity = 0;
+      this.#element.removeChild(this.#label);
+      img.style.transform = "translateY(50px)";
+      img.style.opacity = 0;
       setTimeout(() => {
         document.body.removeChild(this.#element);
       }, this.#SPEED);

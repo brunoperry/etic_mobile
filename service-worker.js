@@ -19,7 +19,6 @@ const cachedAssets = [
 ];
 
 self.addEventListener("install", async (event) => {
-  console.log("install");
   const cache = await caches.open(CACHE_NAME);
   await cache.addAll(cachedAssets);
   await self.skipWaiting();
@@ -29,7 +28,6 @@ self.addEventListener("install", async (event) => {
 });
 
 self.addEventListener("activate", async (event) => {
-  console.log("activate");
   //Clean old cached versions still in memory.
   const oldCache = await caches.open(CACHE_NAME);
   if (oldCache) await oldCache.delete(CACHE_NAME);
@@ -50,7 +48,6 @@ self.addEventListener("activate", async (event) => {
 self.addEventListener("fetch", async (event) => {
   const responsePromise = (async () => {
     const cachedResponse = await caches.match(event.request);
-    console.log("fetchs", event.request.url);
     return cachedResponse || fetch(event.request);
   })();
 
