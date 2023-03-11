@@ -45,6 +45,7 @@ export default class Splash {
     const img = this.#element.querySelector("img");
     img.style.transform = "scale(1)";
     setTimeout(() => {
+      this.#label.style.animationName = "";
       img.style.transform = this.#label.style.transform = "translateY(50px)";
       img.style.opacity = this.#label.style.opacity = 0;
       setTimeout(() => {
@@ -56,7 +57,9 @@ export default class Splash {
   static OFFLINE() {
     const elem = document.querySelector("#splash");
     if (!elem) return;
-    elem.querySelector("p").innerText = "Offline...";
+    const p = elem.querySelector("p");
+    p.style.animationName = "pulse";
+    p.innerText = "Offline...";
     setTimeout(() => {
       document.body.removeChild(elem);
     }, 3000);
