@@ -24,4 +24,19 @@ export default class ListButton extends Button {
       this.element.removeChild(iconsContainer);
     }
   }
+
+  get data() {
+    return this.#listButtonData;
+  }
+
+  get highlight() {
+    this.element.className.includes(" hightlight");
+  }
+  set highlight(val) {
+    if (val) {
+      this.element.className += " highlight";
+    } else {
+      this.element.className = this.element.className.replace(" highlight", "");
+    }
+  }
 }

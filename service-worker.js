@@ -1,5 +1,5 @@
 //Current version
-const VERSION = "1.0.0";
+const VERSION = "1.0.1";
 
 //Name for our app cache
 const CACHE_NAME = "musicplayer";
@@ -18,9 +18,22 @@ const cachedAssets = [
   "/etic_mobile/images/screenshot2.png",
 ];
 
+const cachedAssetsDEV = [
+  "/",
+  "/index.html",
+  "/app_logo.svg",
+  "/manifest.json",
+  "/images/icons-192.png",
+  "/images/icons-512.png",
+  "/images/icons-vector.svg",
+  "/images/maskable_icon.png",
+  "/images/screenshot1.png",
+  "/images/screenshot2.png",
+];
+
 self.addEventListener("install", async (event) => {
   const cache = await caches.open(CACHE_NAME);
-  await cache.addAll(cachedAssets);
+  await cache.addAll(cachedAssetsDEV);
   await self.skipWaiting();
 
   // Store the current version number in the cache
@@ -37,11 +50,17 @@ self.addEventListener("activate", async (event) => {
   const cachedVersion = await cache.match("version");
   const currentVersion = new Response(VERSION);
 
+  console.log("activate");
+
   if (cachedVersion !== currentVersion) {
-    // If the version numbers don't match it means there is an update, reload the page
+    // If the version numbers don't match it means there is an update, send update warning to clients
     await clients.claim();
-    await self.clients.matchAll({ type: "window" }).then((clients) => {
-      clients.forEach((client) => client.navigate(client.url));
+    const clis = await self.clients.matchAll({ type: "window" });
+    clis.forEach((client) => {
+      client.postMessage({
+        type: "update",
+        message: "Update available!",
+      });
     });
   }
 });

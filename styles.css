@@ -303,6 +303,18 @@ li .toggle {
   display: none;
 }
 
+.highlight {
+  background-color: var(--secondary-color);
+}
+
+.highlight label {
+  color: var(--primary-color);
+}
+
+.highlight svg {
+  fill: var(--primary-color);
+}
+
 @keyframes peekaboo {
   0% {
     transform: translateY(-100%);

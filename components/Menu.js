@@ -1,6 +1,6 @@
 import Button from "./Button.js";
 import Component from "./Component.js";
-import ListButton from "./ListButton.js";
+import List from "./List.js";
 import ToggleButton from "./ToggleButton.js";
 
 export default class Menu extends Component {
@@ -8,8 +8,10 @@ export default class Menu extends Component {
   #menuContainer;
   #menuButton;
   #backButton;
+  #lists = [];
   #currentList = null;
   #isOpen = false;
+  #trail = null;
 
   constructor(elementId, callback) {
     super(elementId, callback);
@@ -27,47 +29,50 @@ export default class Menu extends Component {
   }
 
   #createList(data) {
-    const ul = document.createElement("ul");
-
-    data.forEach((itemData) => {
-      const listButton = new ListButton(itemData, () => {
-        if (itemData.type === "folder") {
-          this.#createList(itemData.children);
-        } else {
-          this.callback(itemData);
-        }
-      });
-      ul.appendChild(listButton.element);
+    const list = new List(data, (event) => {
+      if (event.type === "folder") {
+        this.#createList(event.children);
+      } else {
+        this.callback(event);
+      }
     });
+    if (this.#trail) list.highlight(this.#trail);
 
     if (this.#currentList) {
-      this.#currentList.style.transform = "translateX(-100%)";
+      this.#currentList.transform("translateX(-100%)");
     }
-    this.#menuContainer.appendChild(ul);
-    this.#currentList = ul;
+    this.#lists.push(list);
+    this.#menuContainer.appendChild(list.element);
+    this.#currentList = list;
 
     setTimeout(() => {
-      this.#currentList.style.transform = "translateX(0)";
+      this.#currentList.transform("translateX(0)");
     }, 100);
     this.#backButton.displayed = this.#menuContainer.children.length > 1;
   }
 
   #deleteList(index = null) {
     if (index !== null) {
-      const list = this.#menuContainer.children[index];
-      list.style.transform = "translateX(100%)";
-      this.#currentList = this.#menuContainer.children[index - 1];
-      this.#currentList.style.transform = "translateX(0)";
+      const list = this.#lists[index];
+      list.transform("translateX(100%)");
+      this.#currentList = this.#lists[index - 1];
+      this.#currentList.transform("translateX(0)");
 
       this.#menuContainer.children.length - 1 > 1
         ? (this.#backButton.displayed = true)
         : (this.#backButton.displayed = false);
       setTimeout(() => {
-        this.#menuContainer.removeChild(list);
+        this.#menuContainer.removeChild(list.element);
+        // Remove the item at the specified index
+        for (let i = index; i < this.#lists.length - 1; i++) {
+          this.#lists[i] = this.#lists[i + 1];
+        }
+        this.#lists.length = this.#lists.length - 1; // Adjust the length of the array
       }, this.SPEED);
     } else {
       this.#menuContainer.innerHTML = "";
       this.#currentList = null;
+      this.#lists = [];
       this.#backButton.displayed = false;
     }
   }
@@ -90,8 +95,9 @@ export default class Menu extends Component {
   }
 
   setTrail(trail) {
+    this.#trail = trail;
     if (!this.#isOpen) return;
-    console.log(trail);
+    this.#lists.forEach((list) => list.highlight(trail));
   }
 
   get data() {
@@ -101,7 +107,7 @@ export default class Menu extends Component {
   set data(val) {
     if (this.#isOpen) {
       this.close();
-      setTimeout(() => (this.#menuData = val));
+      setTimeout(() => (this.#menuData = val), this.SPEED);
     } else {
       this.#menuData = val;
     }

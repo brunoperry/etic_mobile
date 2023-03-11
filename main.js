@@ -20,17 +20,37 @@ let menu;
 const API_URL = "https://shrouded-fire-liver.glitch.me/";
 
 let isOnline = navigator.onLine;
+let peekabooMessage = null;
 
 window.onload = async () => {
   setupPWA();
   await initialize(API_URL, true);
   setupLayout();
   setupAudio();
+
+  if (peekabooMessage) {
+    peekaboo.show(peekabooMessage);
+    addUpdateButton();
+  }
 };
 
 const setupPWA = () => {
   if ("serviceWorker" in navigator && isOnline) {
     navigator.serviceWorker.register("service-worker.js");
+    navigator.serviceWorker.addEventListener("message", (event) => {
+      switch (event.data.type) {
+        case "update":
+          if (peekaboo) {
+            addUpdateButton();
+          } else {
+            peekabooMessage = event.data.message;
+          }
+          break;
+
+        default:
+          break;
+      }
+    });
   }
   window.ononline = async () => {
     isOnline = true;
@@ -186,6 +206,7 @@ const setupLayout = () => {
 
 const setupAudio = () => {
   audioPlayer = new AudioPlayer((action, error = null) => {
+    console.log(action);
     if (action !== "progress") controller.setState(action);
 
     switch (action) {
@@ -205,6 +226,10 @@ const setupAudio = () => {
       case "play":
         scrub.element.style.display = audioPlayer.duration === Infinity ? "none" : "flex";
         info.update(audioPlayer.currentTrack);
+        menu.setTrail(audioPlayer.currentTrack.id);
+        break;
+      case "pause":
+        menu.setTrail(null);
         break;
       case "progress":
         scrub.value = (audioPlayer.currentTime / audioPlayer.duration) * 100;
@@ -227,4 +252,13 @@ const fetchPlaylist = (node, itemID) => {
     if (item) break;
   }
   return item;
+};
+
+const addUpdateButton = () => {
+  peekaboo.show(event.data.message);
+  appData.push({
+    type: "update",
+    name: "update",
+  });
+  menu.data = appData;
 };

@@ -43,6 +43,7 @@ const terser_config = {
 const modules = [
   "../components/AudioPlayer.js",
   "../components/Component.js",
+  "../components/List.js",
   "../components/Button.js",
   "../components/ToggleButton.js",
   "../components/ListButton.js",

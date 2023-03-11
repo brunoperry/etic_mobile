@@ -23,6 +23,9 @@ export default class Component {
   translateY(val) {
     this.element.style.transform = `translateY(${val}px)`;
   }
+  transform(val) {
+    this.element.style.transform = val;
+  }
 
   get displayed() {
     return this.element.style.display === "initial";
