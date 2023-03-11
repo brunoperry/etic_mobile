@@ -25,8 +25,20 @@ export default class Info extends Component {
     this.#infoButton.text = data.name;
     this.#nameLabel.innerText = data.name;
     this.#typeLabel.innerText = data.type;
-    this.#infoButton.color =
-      data.type === "error" ? "var(--error-color)" : "var(--primary-color)";
+
+    let col;
+    switch (data.type) {
+      case "error":
+        col = "var(--error-color)";
+        break;
+      case "loading":
+        col = "var(--terciary-color)";
+        break;
+      default:
+        col = "var(--primary-color)";
+        break;
+    }
+    this.#infoButton.color = col;
   }
 
   open() {

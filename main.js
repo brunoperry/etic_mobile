@@ -176,6 +176,12 @@ const setupAudio = () => {
     if (action !== "progress") controller.setState(action);
 
     switch (action) {
+      case "loading":
+        info.update({
+          name: audioPlayer.currentTrack.name,
+          type: "loading",
+        });
+        break;
       case "error":
         info.update({
           name: audioPlayer.currentTrack.name,
