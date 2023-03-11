@@ -14,6 +14,8 @@
   --font-light: 300;
 
   --button-height: 92px;
+
+  --nav-height: env(safe-area-inset-bottom);
 }
 
 ::-webkit-scrollbar {
@@ -35,6 +37,7 @@ body {
   background-color: var(--terciary-color);
   max-width: 100%;
   height: 100%;
+  max-height: calc(100vh - var(--nav-height));
   overscroll-behavior-y: contain;
   overflow: hidden;
 }
