@@ -286,6 +286,9 @@ li .toggle {
   height: 24px;
   width: 100%;
   text-align: center;
+  animation-duration: var(--speed);
+  animation-direction: alternate;
+  animation-iteration-count: infinite;
 }
 
 .toggle {
@@ -304,5 +307,15 @@ li .toggle {
 
   100% {
     transform: translateY(0);
+  }
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale3d(1, 1, 1);
+  }
+
+  100% {
+    transform: scale3d(1.1, 1.1, 1);
   }
 }

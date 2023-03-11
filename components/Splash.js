@@ -41,6 +41,7 @@ export default class Splash {
     this.#intervalID = null;
 
     this.#label.innerText = "App loaded!";
+    this.#label.style.animationName = "pulse";
     const img = this.#element.querySelector("img");
     img.style.transform = "scale(1)";
     setTimeout(() => {
