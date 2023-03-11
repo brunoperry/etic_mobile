@@ -134,6 +134,7 @@ const setupLayout = () => {
         scrub.scale(0.9);
         break;
       case "music":
+      case "radio":
       case "file":
         menu.close();
         await audioPlayer.play(value, fetchPlaylist(appData, value.id));
