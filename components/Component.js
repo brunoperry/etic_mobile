@@ -20,6 +20,9 @@ export default class Component {
   scale(val) {
     this.element.style.transform = `scale3d(${val},${val},1)`;
   }
+  translateY(val) {
+    this.element.style.transform = `translateY(${val}px)`;
+  }
 
   get displayed() {
     return this.element.style.display === "initial";

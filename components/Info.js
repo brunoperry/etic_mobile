@@ -47,6 +47,8 @@ export default class Info extends Component {
     this.#infoButton.toggle(1);
     this.#isOpened = true;
 
+    this.callback({ type: "opening" });
+
     setTimeout(() => {
       for (let i = 0; i < this.#infoContainer.children.length; i++) {
         const element = this.#infoContainer.children[i];
@@ -56,6 +58,8 @@ export default class Info extends Component {
   }
   close() {
     if (!this.#isOpened) return;
+
+    this.callback({ type: "closing" });
     for (let i = 0; i < this.#infoContainer.children.length; i++) {
       const element = this.#infoContainer.children[i];
       element.style.display = "none";

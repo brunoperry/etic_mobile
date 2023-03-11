@@ -93,7 +93,20 @@ const initialize = async (api_url = API_URL, withSplash = false) => {
 const setupLayout = () => {
   peekaboo = new PeekABoo("#peek-a-boo");
 
-  info = new Info("#info", (value) => {});
+  info = new Info("#info", (value) => {
+    switch (value.type) {
+      case "opening":
+        controller.translateY(20);
+        scrub.translateY(20);
+        volumeBar.translateY(10);
+        break;
+      case "closing":
+        controller.translateY(0);
+        scrub.translateY(0);
+        volumeBar.translateY(0);
+        break;
+    }
+  });
 
   controller = new Controller("#controller", (action) => {
     switch (action) {

@@ -50,7 +50,7 @@ export default class Splash {
       img.style.opacity = 0;
       setTimeout(() => {
         document.body.removeChild(this.#element);
-      }, this.#SPEED);
+      }, this.#SPEED * 3);
     }, 1500);
   }
 
