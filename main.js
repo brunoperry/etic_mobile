@@ -18,7 +18,7 @@ let volumeBar;
 let menu;
 
 // const API_URL = "https://shrouded-fire-liver.glitch.me/";
-const API_URL = "http://185.11.167.191:3100/";
+const API_URL = "https://musicplayer.brunoperry.net/";
 
 let isOnline = navigator.onLine;
 let peekabooMessage = null;
