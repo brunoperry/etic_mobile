@@ -1,5 +1,5 @@
 //Current version
-const VERSION = "1.0.0";
+const VERSION = "1.0.3";
 
 //Name for our app cache
 const CACHE_NAME = "musicplayer";
