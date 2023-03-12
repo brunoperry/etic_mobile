@@ -33,7 +33,7 @@ const cachedAssetsDEV = [
 
 self.addEventListener("install", async (event) => {
   const cache = await caches.open(CACHE_NAME);
-  await cache.addAll(cachedAssetsDEV);
+  await cache.addAll(cachedAssets);
   await self.skipWaiting();
 
   // Store the current version number in the cache
