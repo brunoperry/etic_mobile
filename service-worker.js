@@ -33,7 +33,8 @@ const cachedAssetsDEV = [
   "/components/Splash.js",
   "/components/ToggleButton.js",
   "/main.js",
-  "/index.html",
+  "/index_dev.html",
+  "/styles.css",
   "/app_logo.svg",
   "/manifest.json",
   "/images/icons-192.png",
@@ -48,7 +49,7 @@ let isUpdate = false;
 self.addEventListener("install", async (event) => {
   isUpdate = await caches.has(CACHE_NAME);
   const cache = await caches.open(CACHE_NAME);
-  await cache.addAll(cachedAssets);
+  await cache.addAll(cachedAssetsDEV);
   await self.skipWaiting();
 
   // Store the current version number in the cache
