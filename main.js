@@ -102,6 +102,7 @@ const initialize = async (api_url = API_URL, withSplash = false) => {
         name: "exit",
       },
     ];
+    return;
   }
   try {
     const req = await fetch(api_url, {
