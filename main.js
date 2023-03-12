@@ -30,8 +30,6 @@ window.onload = async () => {
   if (peekabooMessage) {
     addUpdateButton(peekabooMessage);
   }
-
-  alert("ready");
 };
 
 const setupPWA = () => {
