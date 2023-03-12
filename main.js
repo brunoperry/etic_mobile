@@ -26,10 +26,22 @@ let peekabooMessage = null;
 window.onload = async () => {
   // if (!setupPWA()) return;
 
-  if (setupPWA() && isOnline) {
+  if (setupPWA()) {
     await initialize(API_URL, true);
-  } else {
+  }
+
+  if (!isOnline) {
     Splash.OFFLINE();
+    appData = [
+      {
+        type: "open",
+        name: "open...",
+      },
+      {
+        type: "exit",
+        name: "exit",
+      },
+    ];
   }
   // await initialize(API_URL, true);
   setupLayout();
@@ -77,8 +89,9 @@ const setupPWA = () => {
 };
 
 const initialize = async (api_url = API_URL, withSplash = false) => {
+  if (withSplash) splash = new Splash();
+
   if (!isOnline) {
-    Splash.OFFLINE();
     appData = [
       {
         type: "open",
@@ -89,9 +102,7 @@ const initialize = async (api_url = API_URL, withSplash = false) => {
         name: "exit",
       },
     ];
-    return;
   }
-  if (withSplash) splash = new Splash();
   try {
     const req = await fetch(api_url, {
       headers: {
