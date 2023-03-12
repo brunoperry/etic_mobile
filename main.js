@@ -49,7 +49,7 @@ const setupPWA = () => {
           break;
       }
     });
-    if (screen.orientation.lock) screen.orientation.lock("portrait");
+    if (isMobileDevice()) screen.orientation.lock("portrait");
   } else {
     alert("Your browser does not support this app...");
     return false;
@@ -268,4 +268,11 @@ const addUpdateButton = (message) => {
     name: "update",
   });
   menu.data = appData;
+};
+
+const isMobileDevice = () => {
+  return (
+    typeof window.orientation !== "undefined" ||
+    navigator.userAgent.indexOf("IEMobile") !== -1
+  );
 };
