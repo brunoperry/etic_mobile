@@ -23,7 +23,7 @@ let isOnline = navigator.onLine;
 let peekabooMessage = null;
 
 window.onload = async () => {
-  setupPWA();
+  if (!setupPWA()) return;
   await initialize(API_URL, true);
   setupLayout();
   setupAudio();
@@ -49,6 +49,10 @@ const setupPWA = () => {
           break;
       }
     });
+    if (screen.orientation.lock) screen.orientation.lock("portrait");
+  } else {
+    alert("Your browser does not support this app...");
+    return false;
   }
   window.ononline = async () => {
     isOnline = true;
@@ -62,6 +66,7 @@ const setupPWA = () => {
     await initialize();
     menu.data = appData;
   };
+  return true;
 };
 
 const initialize = async (api_url = API_URL, withSplash = false) => {
@@ -152,10 +157,6 @@ const setupLayout = () => {
   });
 
   menu = new Menu("#menu", async (value) => {
-    info.scale(1);
-    controller.scale(1);
-    volumeBar.scale(1);
-    scrub.scale(1);
     switch (value.type) {
       case "opening":
         info.close();
@@ -163,6 +164,12 @@ const setupLayout = () => {
         controller.scale(0.9);
         volumeBar.scale(0.9);
         scrub.scale(0.9);
+        break;
+      case "closing":
+        info.scale(1);
+        controller.scale(1);
+        volumeBar.scale(1);
+        scrub.scale(1);
         break;
       case "music":
       case "radio":
@@ -204,7 +211,6 @@ const setupLayout = () => {
 
 const setupAudio = () => {
   audioPlayer = new AudioPlayer((action, error = null) => {
-    console.log(action);
     if (action !== "progress") controller.setState(action);
 
     switch (action) {

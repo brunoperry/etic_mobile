@@ -142,7 +142,9 @@ input[type="file"] {
 }
 
 #info-container>* {
-  display: none;
+  visibility: hidden;
+  opacity: 0;
+  transition: opacity var(--speed) ease;
 }
 
 

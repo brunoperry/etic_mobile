@@ -28,6 +28,7 @@
   "id": "/etic_mobile/",
   "background_color": "#031E3C",
   "display": "fullscreen",
+  "orientation": "portrait",
   "scope": "/etic_mobile/",
   "theme_color": "#053160",
   "description": "PWA Javascript music player"

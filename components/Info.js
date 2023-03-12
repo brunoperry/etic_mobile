@@ -52,7 +52,8 @@ export default class Info extends Component {
     setTimeout(() => {
       for (let i = 0; i < this.#infoContainer.children.length; i++) {
         const element = this.#infoContainer.children[i];
-        element.style.display = "flex";
+        element.style.visibility = "visible";
+        element.style.opacity = 1;
       }
     }, this.SPEED);
   }
@@ -62,11 +63,16 @@ export default class Info extends Component {
     this.callback({ type: "closing" });
     for (let i = 0; i < this.#infoContainer.children.length; i++) {
       const element = this.#infoContainer.children[i];
-      element.style.display = "none";
+      element.style.visibility = "hidden";
+      element.style.opacity = 0;
     }
     this.#infoContainer.style.transform = "scaleY(0)";
     this.#infoButton.toggle(0);
     this.#isOpened = false;
+  }
+
+  translateY(val) {
+    this.#infoButton.translateY(val);
   }
 
   scale(val) {

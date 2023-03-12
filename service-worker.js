@@ -50,7 +50,7 @@ self.addEventListener("activate", async (event) => {
   const cachedVersion = await cache.match("version");
   const currentVersion = new Response(VERSION);
 
-  console.log("activate");
+  console.log("activate", currentVersion);
 
   if (cachedVersion !== currentVersion) {
     // If the version numbers don't match it means there is an update, send update warning to clients
