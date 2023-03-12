@@ -24,8 +24,14 @@ let isOnline = navigator.onLine;
 let peekabooMessage = null;
 
 window.onload = async () => {
-  if (!setupPWA()) return;
-  await initialize(API_URL, true);
+  // if (!setupPWA()) return;
+
+  if (setupPWA() && isOnline) {
+    await initialize(API_URL, true);
+  } else {
+    Splash.OFFLINE();
+  }
+  // await initialize(API_URL, true);
   setupLayout();
   setupAudio();
   if (peekabooMessage) {
@@ -111,6 +117,22 @@ const initialize = async (api_url = API_URL, withSplash = false) => {
     if (withSplash) splash.delete();
   } catch (error) {
     withSplash ? splash.error() : peekaboo.show("Something went wrong...", "error");
+
+    appData = [
+      {
+        type: "open",
+        name: "open...",
+      },
+      {
+        type: "exit",
+        name: "exit",
+      },
+      {
+        type: "retry",
+        name: "retry",
+      },
+    ];
+    menu.data = appData;
   }
 };
 

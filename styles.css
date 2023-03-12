@@ -321,8 +321,13 @@ li .toggle {
   background-color: var(--success-color);
 }
 
-.update label {
+.update label,
+.retry label {
   color: white;
+}
+
+.retry {
+  background-color: var(--error-color);
 }
 
 @keyframes peekaboo {

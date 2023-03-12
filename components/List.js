@@ -13,6 +13,7 @@ export default class List extends Component {
       const listButton = new ListButton(itemData, () => this.callback(itemData));
 
       if (itemData.type === "update") listButton.className = "update";
+      if (itemData.type === "retry") listButton.className = "retry";
       this.#items.push(listButton);
       ul.appendChild(listButton.element);
     });
