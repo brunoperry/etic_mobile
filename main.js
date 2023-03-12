@@ -189,6 +189,9 @@ const setupLayout = () => {
       case "exit":
         window.close();
         break;
+      case "update":
+        location.reload();
+        break;
     }
   });
   menu.data = appData;

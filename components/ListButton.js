@@ -39,4 +39,11 @@ export default class ListButton extends Button {
       this.element.className = this.element.className.replace(" highlight", "");
     }
   }
+
+  get className() {
+    return this.element.className;
+  }
+  set className(val) {
+    this.element.className = val;
+  }
 }

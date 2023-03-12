@@ -11,6 +11,8 @@ export default class List extends Component {
     const ul = document.createElement("ul");
     this.#listData.forEach((itemData) => {
       const listButton = new ListButton(itemData, () => this.callback(itemData));
+
+      if (itemData.type === "update") listButton.className = "update";
       this.#items.push(listButton);
       ul.appendChild(listButton.element);
     });

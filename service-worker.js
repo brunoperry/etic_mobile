@@ -20,6 +20,19 @@ const cachedAssets = [
 
 const cachedAssetsDEV = [
   "/",
+  "/components/AudioPlayer.js",
+  "/components/Component.js",
+  "/components/Button.js",
+  "/components/Controller.js",
+  "/components/Info.js",
+  "/components/List.js",
+  "/components/ListButton.js",
+  "/components/Menu.js",
+  "/components/PeekABoo.js",
+  "/components/RangeBar.js",
+  "/components/Splash.js",
+  "/components/ToggleButton.js",
+  "/main.js",
   "/index.html",
   "/app_logo.svg",
   "/manifest.json",
@@ -31,7 +44,9 @@ const cachedAssetsDEV = [
   "/images/screenshot2.png",
 ];
 
+let isUpdate = false;
 self.addEventListener("install", async (event) => {
+  isUpdate = await caches.has(CACHE_NAME);
   const cache = await caches.open(CACHE_NAME);
   await cache.addAll(cachedAssets);
   await self.skipWaiting();
@@ -41,19 +56,19 @@ self.addEventListener("install", async (event) => {
 });
 
 self.addEventListener("activate", async (event) => {
-  //Clean old cached versions still in memory.
-  const oldCache = await caches.open(CACHE_NAME);
-  if (oldCache) await oldCache.delete(CACHE_NAME);
-
+  //Clean old cached versions still in memory if is an update.
+  if (isUpdate) {
+    const oldCache = await caches.open(CACHE_NAME);
+    if (oldCache) await oldCache.delete(CACHE_NAME);
+  }
   // Check the version number stored in the cache
   const cache = await caches.open(CACHE_NAME);
   const cachedVersion = await cache.match("version");
   const currentVersion = new Response(VERSION);
 
-  console.log("activate", currentVersion);
-
-  if (cachedVersion !== currentVersion) {
-    // If the version numbers don't match it means there is an update, send update warning to clients
+  if (cachedVersion !== currentVersion && isUpdate) {
+    // If its not the first install and if the version numbers don't match it means there is an update,
+    // send update warning to clients
     await clients.claim();
     const clis = await self.clients.matchAll({ type: "window" });
     clis.forEach((client) => {
