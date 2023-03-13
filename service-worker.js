@@ -1,5 +1,5 @@
 //Current version
-const VERSION = "1.0.3";
+const VERSION = "1.0.0";
 
 //Name for our app cache
 const CACHE_NAME = "musicplayer";
@@ -83,15 +83,7 @@ self.addEventListener("activate", async (event) => {
 self.addEventListener("fetch", async (event) => {
   const responsePromise = (async () => {
     const cachedResponse = await caches.match(event.request);
-    if (cachedResponse) return cachedResponse;
-
-    try {
-      const response = await fetch(event.request);
-      return response;
-    } catch (error) {
-      return new Response({ status: 503 }, { status: 503 });
-    }
+    return cachedResponse ? cachedResponse : fetch(event.request);
   })();
-
   event.respondWith(responsePromise);
 });

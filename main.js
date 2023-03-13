@@ -109,11 +109,7 @@ const initialize = async (api_url = API_URL, withSplash = false) => {
       headers: {
         "Accept-Encoding": "gzip",
       },
-      mode: "no-cors",
     });
-
-    console.log(req);
-    if (!req.status) return;
     const apiData = await req.json();
     appData = [
       ...apiData,
@@ -135,20 +131,7 @@ const initialize = async (api_url = API_URL, withSplash = false) => {
     console.log("ERROR", error);
     withSplash ? splash.error() : peekaboo.show("Something went wrong...", "error");
 
-    appData = [
-      {
-        type: "open",
-        name: "open...",
-      },
-      {
-        type: "exit",
-        name: "exit",
-      },
-      {
-        type: "retry",
-        name: "retry",
-      },
-    ];
+    addRetryButton();
   }
 };
 
@@ -228,6 +211,7 @@ const setupLayout = () => {
       case "exit":
         window.close();
         break;
+      case "retry":
       case "update":
         location.reload();
         break;
@@ -307,6 +291,24 @@ const addUpdateButton = (message) => {
     name: "update",
   });
   menu.data = appData;
+};
+
+const addRetryButton = (message) => {
+  appData = [
+    {
+      type: "open",
+      name: "open...",
+    },
+    {
+      type: "exit",
+      name: "exit",
+    },
+    {
+      type: "retry",
+      name: "retry",
+    },
+  ];
+  if (menu) menu.data = appData;
 };
 
 const isMobileDevice = () => {
