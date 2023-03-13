@@ -96,7 +96,8 @@ export default class Menu extends Component {
 
   setTrail(trail) {
     this.#trail = trail;
-    if (!this.#isOpen) return;
+    if (!this.#isOpen || !this.#trail) return;
+
     this.#lists.forEach((list) => list.highlight(trail));
   }
 
