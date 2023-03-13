@@ -49,7 +49,7 @@ let isUpdate = false;
 self.addEventListener("install", async (event) => {
   isUpdate = await caches.has(CACHE_NAME);
   const cache = await caches.open(CACHE_NAME);
-  await cache.addAll(cachedAssetsDEV);
+  await cache.addAll(cachedAssets);
   await self.skipWaiting();
 
   // Store the current version number in the cache
@@ -89,7 +89,7 @@ self.addEventListener("fetch", async (event) => {
       const response = await fetch(event.request);
       return response;
     } catch (error) {
-      return new Response(null, { status: "503" });
+      return new Response({ status: 503 }, { status: 503 });
     }
   })();
 
