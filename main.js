@@ -109,7 +109,11 @@ const initialize = async (api_url = API_URL, withSplash = false) => {
       headers: {
         "Accept-Encoding": "gzip",
       },
+      mode: "no-cors",
     });
+
+    console.log(req);
+    if (!req.status) return;
     const apiData = await req.json();
     appData = [
       ...apiData,
@@ -128,6 +132,7 @@ const initialize = async (api_url = API_URL, withSplash = false) => {
     ];
     if (withSplash) splash.delete();
   } catch (error) {
+    console.log("ERROR", error);
     withSplash ? splash.error() : peekaboo.show("Something went wrong...", "error");
 
     appData = [
@@ -144,7 +149,6 @@ const initialize = async (api_url = API_URL, withSplash = false) => {
         name: "retry",
       },
     ];
-    menu.data = appData;
   }
 };
 
